@@ -18,7 +18,11 @@ export function LoginScreen() {
         style={styles.backgroundImage}>
         <View style={styles.AboveBackgroundImage}>
           <View style={styles.upperLogin}>
-            <TouchableOpacity style={styles.translateButton} onPress={() => {}}>
+            <TouchableOpacity
+              style={styles.translateButton}
+              onPress={() => {
+                alert('Arabic Translation Soon');
+              }}>
               <Text style={styles.translateButtonText}>AR</Text>
             </TouchableOpacity>
             <Image

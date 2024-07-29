@@ -26,7 +26,7 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 30,
-    marginTop: 20,
+    marginTop: 40,
   },
   translateButton: {
     backgroundColor: '#FFFFFF',
@@ -43,14 +43,10 @@ export default styles = StyleSheet.create({
     // alignItems: 'center',
   },
   upperLogo: {
-    width: 120,
-    height: 30,
+    width: 160,
+    height: 40,
   },
-  welcomeText: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    marginTop: 50,
-  },
+  
   input: {
     height: 40,
     margin: 12,
