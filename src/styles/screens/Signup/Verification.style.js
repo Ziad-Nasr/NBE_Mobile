@@ -2,13 +2,11 @@ import {StyleSheet} from 'react-native';
 export default styles = StyleSheet.create({
   Verification: {
     backgroundColor: '#F1F3FB',
-    flex: 1,
+    height: '100%',
   },
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1, // Ensure the container takes available space
   },
   input: {
     backgroundColor: '#FFFFFF',
@@ -17,11 +15,17 @@ export default styles = StyleSheet.create({
     width: 40,
     height: 60,
     textAlign: 'center',
+    margin: 5,
     fontSize: 18,
   },
   loginButton: {
-    // Add styles for login button container if needed
-    marginTop: 20,
-    alignItems: 'center',
+    marginHorizontal: 20,
+    marginBottom: 20,
+  },
+  blackText: {
+    color: '#000000',
+  },
+  bold: {
+    fontWeight: 'bold',
   },
 });

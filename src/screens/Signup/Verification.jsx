@@ -1,8 +1,9 @@
 import React, {useRef, useState} from 'react';
-import {Text, View, TouchableOpacity, Image, TextInput} from 'react-native';
+import {Text, View, TextInput} from 'react-native';
 import TopSignup from '../../components/TopSignup';
 import {Button} from '../../Reusable components/Button';
 import styles from '../../styles/screens/Signup/Verification.style';
+
 export default function Verification({increment, decrement}) {
   const [values, setValues] = useState(Array(5).fill(''));
   const inputRefs = useRef([]);
@@ -17,6 +18,7 @@ export default function Verification({increment, decrement}) {
       }
     }
   };
+
   return (
     <View style={styles.Verification}>
       <TopSignup
@@ -24,24 +26,26 @@ export default function Verification({increment, decrement}) {
         title="Verification"
         subtitle="Enter 5 digit code we sent to +20 101 131 5412"
       />
-      <View>
-        <View style={styles.container}>
-          <Text>Test</Text>
-          {values.map((value, index) => (
-            <TextInput
-              key={index}
-              style={styles.input}
-              value={value}
-              onChangeText={text => handleChangeText(text, index)}
-              keyboardType="numeric"
-              maxLength={1}
-              ref={el => (inputRefs.current[index] = el)}
-            />
-          ))}
-        </View>
+      <View style={{flex: 1, justifyContent: 'space-between'}}>
         <View>
-          <Text>Didn't receive the code ?</Text>
-          <Text>Request a new one in (Timer)</Text>
+          <View style={styles.container}>
+            {values.map((value, index) => (
+              <TextInput
+                key={index}
+                style={styles.input}
+                value={value}
+                onChangeText={text => handleChangeText(text, index)}
+                keyboardType="numeric"
+                maxLength={1}
+                placeholder="_"
+                ref={el => (inputRefs.current[index] = el)}
+              />
+            ))}
+          </View>
+          <Text>Didn't receive the code?</Text>
+          <Text style={[styles.blackText, styles.bold]}>
+            Request a new one in (Timer)
+          </Text>
         </View>
         <View style={styles.loginButton}>
           <Button title="Submit" myOnClick={increment} />
