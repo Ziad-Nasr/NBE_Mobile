@@ -46,7 +46,13 @@ export default styles = StyleSheet.create({
     width: 160,
     height: 40,
   },
-  
+  lowerLogin: {
+    // backgroundColor: 'rgba(0,0,0,0.5)',
+    width: '100%',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // height: '100%',
+  },
   input: {
     height: 40,
     margin: 12,

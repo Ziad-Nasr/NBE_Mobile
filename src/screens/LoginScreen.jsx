@@ -30,7 +30,7 @@ export function LoginScreen() {
               style={styles.upperLogo}
             />
           </View>
-          <View>
+          <View style={styles.lowerLogin}>
             <LoginForm />
           </View>
         </View>

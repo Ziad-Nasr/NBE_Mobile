@@ -15,6 +15,7 @@ import {SplashScreen} from './screens/SplashScreen';
 
 import styles from './styles/App.style';
 import {LoginScreen} from './screens/LoginScreen';
+import SignupScreen from './screens/SignupScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,11 +30,12 @@ export const App = () => {
   // }, []);
   return (
     <>
-      {loadingCounter < 3 ? (
+      {/* {loadingCounter < 3 ? (
         <SplashScreen />
       ) : (
-        <LoginScreen />
-        // <NavigationContainer>
+        <LoginScreen /> */}
+      <SignupScreen />
+      {/* // <NavigationContainer>
         //   <View style={styles.app}>
         //     <TopBar />
         //     <StatusBar barStyle="dark-content" backgroundColor="#F1F3FB" />
@@ -68,7 +70,7 @@ export const App = () => {
         //     <Navigator navigation={navigator}></Navigator>
         // </View>
         // </NavigationContainer>
-      )}
+      )} */}
     </>
   );
 };
