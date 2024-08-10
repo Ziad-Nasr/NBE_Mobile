@@ -1,15 +1,18 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Balance, More, SendMoney } from './../components'
+import {View, Text} from 'react-native';
+import {Balance, More, SendMoney} from './../components';
 
-import styles from './../styles/screens/HomeScreen.style'
+import styles from './../styles/screens/HomeScreen.style';
+import History from '../components/History';
 
-export const HomeScreen = ({ navigation }) => {
+export const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.home}>
+      <Text>Test</Text>
       <Balance />
-      <More navigation={navigation}/>
+      <More navigation={navigation} />
       <SendMoney />
+      <History />
     </View>
-  )
-}
+  );
+};

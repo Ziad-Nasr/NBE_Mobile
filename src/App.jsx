@@ -30,47 +30,42 @@ export const App = () => {
   // }, []);
   return (
     <>
-      {/* {loadingCounter < 3 ? (
-        <SplashScreen />
-      ) : (
-        <LoginScreen /> */}
-      <SignupScreen />
-      {/* // <NavigationContainer>
-        //   <View style={styles.app}>
-        //     <TopBar />
-        //     <StatusBar barStyle="dark-content" backgroundColor="#F1F3FB" />
+      {/* {loadingCounter < 3 ? <SplashScreen /> : <SignupScreen />} */}
+      <NavigationContainer>
+        <View style={styles.app}>
+          <TopBar />
+          <StatusBar barStyle="dark-content" backgroundColor="#F1F3FB" />
 
-        //     <Stack.Navigator initialRouteName="home">
-        //       <Stack.Screen
-        //         name="home"
-        //         component={HomeScreen}
-        //         options={{headerShown: false}}
-        //       />
-        //       <Stack.Screen
-        //         name="accounts"
-        //         component={AccountsScreen}
-        //         options={{headerShown: false}}
-        //       />
-        //       <Stack.Screen
-        //         name="cards"
-        //         component={CardsScreen}
-        //         options={{headerShown: false}}
-        //       />
-        //       <Stack.Screen
-        //         name="utils"
-        //         component={UtilsScreen}
-        //         options={{headerShown: false}}
-        //       />
-        //       <Stack.Screen
-        //         name="history"
-        //         component={HistoryScreen}
-        //         options={{headerShown: false}}
-        //       />
-        //     </Stack.Navigator>
-        //     <Navigator navigation={navigator}></Navigator>
-        // </View>
-        // </NavigationContainer>
-      )} */}
+          <Stack.Navigator initialRouteName="home">
+            <Stack.Screen
+              name="home"
+              component={HomeScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="accounts"
+              component={AccountsScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="cards"
+              component={CardsScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="utils"
+              component={UtilsScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="history"
+              component={HistoryScreen}
+              options={{headerShown: false}}
+            />
+          </Stack.Navigator>
+          <Navigator navigation={navigator}></Navigator>
+        </View>
+      </NavigationContainer>
     </>
   );
 };
