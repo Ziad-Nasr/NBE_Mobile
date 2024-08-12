@@ -1,23 +1,22 @@
-import {
-  StyleSheet
-} from 'react-native';
-
+import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
-
   navigator: {
     backgroundColor: '#fff',
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    height: 80,
-    padding: 10,
+    // padding: 10,
+    height: '100%',
+    flex: 1,
   },
 
   activeNavBtn: {
     backgroundColor: '#007236',
-    height: 65,
-    width: 65,
-    borderRadius: 10,
+    height: 75,
+    margin: 5,
+    width: 75,
+    borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
     marginEnd: 5,
@@ -33,9 +32,9 @@ export default styles = StyleSheet.create({
 
   navBtn: {
     backgroundColor: '#F1F3FB',
-    height: 65,
-    width: 65,
-    borderRadius: 10,
+    height: 75,
+    width: 75,
+    borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
     marginEnd: 5,
@@ -48,5 +47,4 @@ export default styles = StyleSheet.create({
   navText: {
     color: '#B7B7B7',
   },
-
 });

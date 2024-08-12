@@ -36,7 +36,7 @@ export const App = () => {
           <TopBar />
           <StatusBar barStyle="dark-content" backgroundColor="#F1F3FB" />
 
-          <Stack.Navigator initialRouteName="home">
+          {/* <Stack.Navigator initialRouteName="home">
             <Stack.Screen
               name="home"
               component={HomeScreen}
@@ -62,8 +62,8 @@ export const App = () => {
               component={HistoryScreen}
               options={{headerShown: false}}
             />
-          </Stack.Navigator>
-          <Navigator navigation={navigator}></Navigator>
+          </Stack.Navigator> */}
+          <Navigator navigation={navigator} />
         </View>
       </NavigationContainer>
     </>
