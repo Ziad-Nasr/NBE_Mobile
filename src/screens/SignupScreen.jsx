@@ -4,6 +4,8 @@ import MobileSignupScreen from './Signup/MobileNumber';
 import Verification from './Signup/Verification';
 import SetupPassword from './Signup/SetupPassword';
 import {HomeScreen} from './HomeScreen';
+import {Navigator} from '../components';
+import {Tab} from '../components/Tab';
 
 export default function SignupScreen() {
   const [pageNumber, setPageNumber] = useState(0);
@@ -43,7 +45,7 @@ export default function SignupScreen() {
           />
         );
       default:
-        return <HomeScreen />;
+        return <Tab />;
     }
   };
   return <View>{currPage()}</View>;

@@ -50,7 +50,7 @@ export function LoginForm() {
       </View>
       <View style={styles.bottomButtonLoginForm}>
         <View style={styles.loginButton}>
-          <Button title="Login" />
+          <Button title="Login" myOnClick={()=>{navigator.navigate("Navigator")}} />
         </View>
         <View>
           <Image

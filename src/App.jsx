@@ -16,7 +16,8 @@ import {SplashScreen} from './screens/SplashScreen';
 import styles from './styles/App.style';
 import {LoginScreen} from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
-
+import {Navigations} from './navigations';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 const Stack = createNativeStackNavigator();
 
 export const App = () => {
@@ -31,41 +32,27 @@ export const App = () => {
   return (
     <>
       {/* {loadingCounter < 3 ? <SplashScreen /> : <SignupScreen />} */}
-      <NavigationContainer>
-        <View style={styles.app}>
-          <TopBar />
-          <StatusBar barStyle="dark-content" backgroundColor="#F1F3FB" />
-
-          {/* <Stack.Navigator initialRouteName="home">
-            <Stack.Screen
-              name="home"
-              component={HomeScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="accounts"
-              component={AccountsScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="cards"
-              component={CardsScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="utils"
-              component={UtilsScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="history"
-              component={HistoryScreen}
-              options={{headerShown: false}}
-            />
-          </Stack.Navigator> */}
-          <Navigator navigation={navigator} />
-        </View>
-      </NavigationContainer>
+      <GestureHandlerRootView style={{flex: 1}}>
+        <NavigationContainer>
+          <View style={styles.app}>
+            {/* <TopBar /> */}
+            <StatusBar barStyle="dark-content" backgroundColor="#F1F3FB" />
+            <Stack.Navigator>
+              {Navigations.map((item, index) => (
+                <Stack.Screen
+                  key={index}
+                  name={item.name}
+                  component={item.component}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+              ))}
+            </Stack.Navigator>
+            {/* <Navigator navigation={navigator} /> */}
+          </View>
+        </NavigationContainer>
+      </GestureHandlerRootView>
     </>
   );
 };

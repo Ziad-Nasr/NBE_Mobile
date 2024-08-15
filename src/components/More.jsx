@@ -1,32 +1,31 @@
 import React from 'react';
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import {View, Text, TouchableWithoutFeedback} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import styles from './../styles/components/More.style'
+import styles from './../styles/components/More.style';
 
-export const More = ({ navigation }) => {
-
+export const More = ({navigation}) => {
   const openAccountsScreen = () => {
-    navigation.navigate('accounts')
-  }
+    console.log('Test');
+    navigation.navigate('accounts');
+    console.log('Test2');
+  };
 
   const openCardsScreen = () => {
-    navigation.navigate('cards')
-  }
+    navigation.navigate('cards');
+  };
 
   const openUtilsScreen = () => {
-    navigation.navigate('utils')
-  }
+    navigation.navigate('utils');
+  };
 
   const openHistoryScreen = () => {
-    navigation.navigate('history')
-  }
-
+    navigation.navigate('history');
+  };
 
   return (
     <View style={styles.more}>
-
       <TouchableWithoutFeedback onPress={openAccountsScreen}>
         <View style={styles.accountNavBtn}>
           <MaterialCommunityIcons
@@ -70,8 +69,6 @@ export const More = ({ navigation }) => {
           <Text style={styles.historyNavText}>History</Text>
         </View>
       </TouchableWithoutFeedback>
-
-
     </View>
-  )
-}
+  );
+};

@@ -8,7 +8,7 @@ import History from '../components/History';
 export const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.home}>
-      {/* <Text>Test</Text> */}
+      <Text>Test</Text>
       <Balance />
       <More navigation={navigation} />
       <SendMoney />
