@@ -7,6 +7,8 @@ import {
   HomeScreen,
   UtilsScreen,
 } from '../screens';
+import {View} from 'react-native';
+import {TopBar} from '../components';
 
 const routes = [
   {
@@ -35,16 +37,19 @@ const Stack = createNativeStackNavigator();
 
 const HomeStacks = () => {
   return (
-    <Stack.Navigator>
-      {routes.map((route, index) => (
-        <Stack.Screen
-          key={index}
-          name={route.name}
-          component={route.component}
-          options={{headerShown: false}}
-        />
-      ))}
-    </Stack.Navigator>
+    <View style={{flex: 1}}>
+      <TopBar />
+      <Stack.Navigator>
+        {routes.map((route, index) => (
+          <Stack.Screen
+            key={index}
+            name={route.name}
+            component={route.component}
+            options={{headerShown: false}}
+          />
+        ))}
+      </Stack.Navigator>
+    </View>
   );
 };
 

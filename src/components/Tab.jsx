@@ -20,6 +20,7 @@ import {
 } from '../screens';
 import HomeStacks from '../navigations/HomeStacks';
 import {TopBar} from './TopBar';
+import Transfer from '../screens/Transfer/Transfer';
 
 export const Tab = ({navigation}) => {
   // const navigation = useNavigation(); // Use the hook to get navigation object
@@ -35,8 +36,6 @@ export const Tab = ({navigation}) => {
   );
 
   return (
-    <View style={styles.tabContainer}>
-      <TopBar />
       <View style={styles.navigator}>
         <Tab.Navigator
           initialRouteName="home"
@@ -90,7 +89,7 @@ export const Tab = ({navigation}) => {
           />
           <Tab.Screen
             name="transfer"
-            component={CardsScreen}
+            component={Transfer}
             options={{headerShown: false}}
           />
           <Tab.Screen
@@ -162,6 +161,5 @@ export const Tab = ({navigation}) => {
         </View>
       </TouchableWithoutFeedback> */}
       </View>
-    </View>
   );
 };

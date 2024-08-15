@@ -12,7 +12,7 @@ export default styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     // padding: 10,
-    height: '93%',
+    height: '100%',
   },
 
   activeNavBtn: {

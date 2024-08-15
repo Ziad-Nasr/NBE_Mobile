@@ -15,7 +15,9 @@ export default function TopSignup(props) {
       </View>
       <View>
         <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.subtitle}>{props.subtitle}</Text>
+        {props.subtitle && (
+          <Text style={styles.subtitle}>{props.subtitle}</Text>
+        )}
       </View>
     </View>
   );
