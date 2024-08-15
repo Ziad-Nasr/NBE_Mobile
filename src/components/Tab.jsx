@@ -21,6 +21,7 @@ import {
 import HomeStacks from '../navigations/HomeStacks';
 import {TopBar} from './TopBar';
 import Transfer from '../screens/Transfer/Transfer';
+import TransferStacks from '../navigations/TransferStacks';
 
 export const Tab = ({navigation}) => {
   // const navigation = useNavigation(); // Use the hook to get navigation object
@@ -36,80 +37,80 @@ export const Tab = ({navigation}) => {
   );
 
   return (
-      <View style={styles.navigator}>
-        <Tab.Navigator
-          initialRouteName="home"
-          screenOptions={({route}) => ({
-            tabBarStyle: {
-              height: 90,
-              padding: 5,
-              borderTopStartRadius: 15,
-              borderTopEndRadius: 15,
-            },
-            tabBarLabelStyle: {
-              fontSize: 10,
-              color: route.focused
-                ? styles.activeNavText.color
-                : styles.navText.color,
-            },
-            tabBarIcon: ({focused, color, size}) => {
-              let iconName;
+    <View style={styles.navigator}>
+      <Tab.Navigator
+        initialRouteName="home"
+        screenOptions={({route}) => ({
+          tabBarStyle: {
+            height: 90,
+            padding: 5,
+            borderTopStartRadius: 15,
+            borderTopEndRadius: 15,
+          },
+          tabBarLabelStyle: {
+            fontSize: 10,
+            color: route.focused
+              ? styles.activeNavText.color
+              : styles.navText.color,
+          },
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
 
-              if (route.name === 'home') {
-                iconName = focused ? 'home' : 'home-outline';
-              } else if (route.name === 'beneficiaries') {
-                iconName = focused ? 'people' : 'people-outline';
-              } else if (route.name === 'transfer') {
-                iconName = focused ? 'paper-plane' : 'paper-plane-outline';
-              } else if (route.name === 'location') {
-                iconName = focused ? 'location' : 'location-outline';
-              } else if (route.name === 'airPay') {
-                iconName = focused ? 'git-compare' : 'git-compare-outline';
-              }
+            if (route.name === 'home') {
+              iconName = focused ? 'home' : 'home-outline';
+            } else if (route.name === 'beneficiaries') {
+              iconName = focused ? 'people' : 'people-outline';
+            } else if (route.name === 'transfer') {
+              iconName = focused ? 'paper-plane' : 'paper-plane-outline';
+            } else if (route.name === 'location') {
+              iconName = focused ? 'location' : 'location-outline';
+            } else if (route.name === 'airPay') {
+              iconName = focused ? 'git-compare' : 'git-compare-outline';
+            }
 
-              return (
-                <Ionicons
-                  name={iconName}
-                  size={45}
-                  color={focused ? '#fff' : '#B7B7B7'}
-                />
-              );
-            },
-            tabBarButton: props => (
-              <CustomTabBarButton
-                {...props}
-                isActive={props.accessibilityState.selected}
+            return (
+              <Ionicons
+                name={iconName}
+                size={45}
+                color={focused ? '#fff' : '#B7B7B7'}
               />
-            ),
-          })}>
-          <Tab.Screen
-            name="home"
-            component={HomeStacks}
-            options={{headerShown: false}}
-          />
-          <Tab.Screen
-            name="transfer"
-            component={Transfer}
-            options={{headerShown: false}}
-          />
-          <Tab.Screen
-            name="beneficiaries"
-            component={AccountsScreen}
-            options={{headerShown: false}}
-          />
-          <Tab.Screen
-            name="location"
-            component={UtilsScreen}
-            options={{headerShown: false}}
-          />
-          <Tab.Screen
-            name="airPay"
-            component={HistoryScreen}
-            options={{headerShown: false}}
-          />
-        </Tab.Navigator>
+            );
+          },
+          tabBarButton: props => (
+            <CustomTabBarButton
+              {...props}
+              isActive={props.accessibilityState.selected}
+            />
+          ),
+        })}>
+        <Tab.Screen
+          name="home"
+          component={HomeStacks}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="transfer"
+          component={TransferStacks}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="beneficiaries"
+          component={AccountsScreen}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="location"
+          component={UtilsScreen}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name="airPay"
+          component={HistoryScreen}
+          options={{headerShown: false}}
+        />
+      </Tab.Navigator>
 
-        {/* <TouchableWithoutFeedback onPress={() => navigation.navigate('home')}>
+      {/* <TouchableWithoutFeedback onPress={() => navigation.navigate('home')}>
         <View style={styles.activeNavBtn}>
           <MaterialCommunityIcons
             name="home"
@@ -160,6 +161,6 @@ export const Tab = ({navigation}) => {
           <Text style={styles.navText}>Air Pay</Text>
         </View>
       </TouchableWithoutFeedback> */}
-      </View>
+    </View>
   );
 };

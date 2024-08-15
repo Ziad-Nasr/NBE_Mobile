@@ -4,7 +4,7 @@ import TopSignup from '../../components/TopSignup';
 import styles from '../../styles/screens/Signup/Verification.style';
 import {Button} from '../../Reusable components/Button';
 
-const OTP = () => {
+const OTP = ({navigation}) => {
   const [values, setValues] = useState(Array(5).fill(''));
   const inputRefs = useRef([]);
   const handleChangeText = (text, index) => {
@@ -25,6 +25,9 @@ const OTP = () => {
         // decrement={decrement}
         title="OTP"
         subtitle="Enter 5 digit code we sent to +20 101 131 5412"
+        decrement={() => {
+          navigation.navigate('transfer');
+        }}
       />
       <View style={{flex: 1, justifyContent: 'space-between'}}>
         <View>
