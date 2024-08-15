@@ -1,12 +1,21 @@
 import React, {useState, useRef} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Modal,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import TopSignup from '../../components/TopSignup';
 import styles from '../../styles/screens/Signup/Verification.style';
 import {Button} from '../../Reusable components/Button';
 
 const OTP = ({navigation}) => {
   const [values, setValues] = useState(Array(5).fill(''));
+  const [modalVisible, setModalVisible] = useState(false);
   const inputRefs = useRef([]);
+
   const handleChangeText = (text, index) => {
     if (text.length <= 1 && /^[0-9]*$/.test(text)) {
       const newValues = [...values];
@@ -19,10 +28,18 @@ const OTP = ({navigation}) => {
     }
   };
 
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+    navigation.navigate('transfer');
+  };
+
   return (
     <View style={styles.Verification}>
       <TopSignup
-        // decrement={decrement}
         title="OTP"
         subtitle="Enter 5 digit code we sent to +20 101 131 5412"
         decrement={() => {
@@ -53,9 +70,33 @@ const OTP = ({navigation}) => {
           </View>
         </View>
         <View style={styles.loginButton}>
-          <Button title="Submit" />
+          <Button title="Submit" myOnClick={openModal} />
         </View>
       </View>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={closeModal}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Image
+              source={require('../../../assets/checked.png')}
+              style={styles.modalImage}
+            />
+            <Text style={styles.modalTitle}>Mission Complete</Text>
+            <Text style={styles.modalSubtitle}>
+              Transfer to Jsmine Robert was successful
+            </Text>
+            <Button
+              title={'Finish'}
+              style={styles.modalCloseButton}
+              myOnClick={closeModal}
+            />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
