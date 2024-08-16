@@ -5,13 +5,19 @@ import {
   HomeScreen,
   UtilsScreen,
 } from '../screens';
+import AddBeneficiary from '../screens/AddBeneficiary';
 import {LoginScreen} from '../screens/LoginScreen';
+import MapScreen from '../screens/MapScreen';
 import SignupScreen from '../screens/SignupScreen';
 import Transfer from '../screens/Transfer/Transfer';
 import HomeStacks from './HomeStacks';
 import TransferStacks from './TransferStacks';
 
 export const Navigations = [
+  {
+    name: 'AddBeneficiary',
+    component: AddBeneficiary,
+  }
   {
     name: 'signup',
     component: SignupScreen,

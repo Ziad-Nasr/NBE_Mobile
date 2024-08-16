@@ -22,6 +22,7 @@ import HomeStacks from '../navigations/HomeStacks';
 import {TopBar} from './TopBar';
 import Transfer from '../screens/Transfer/Transfer';
 import TransferStacks from '../navigations/TransferStacks';
+import MapScreen from '../screens/MapScreen';
 
 export const Tab = ({navigation}) => {
   // const navigation = useNavigation(); // Use the hook to get navigation object
@@ -100,7 +101,7 @@ export const Tab = ({navigation}) => {
         />
         <Tab.Screen
           name="location"
-          component={UtilsScreen}
+          component={MapScreen}
           options={{headerShown: false}}
         />
         <Tab.Screen
