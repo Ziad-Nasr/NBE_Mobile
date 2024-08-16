@@ -13,10 +13,6 @@ import TransferStacks from './TransferStacks';
 
 export const Navigations = [
   {
-    name: 'accounts',
-    component: AccountsScreen,
-  },
-  {
     name: 'signup',
     component: SignupScreen,
   },

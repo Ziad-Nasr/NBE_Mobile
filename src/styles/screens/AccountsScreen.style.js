@@ -1,6 +1,50 @@
 import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
+  noBeneficiaries: {
+    height: '80%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    width: 300,
+    padding: 20,
+    borderRadius: 15,
+    alignItems: 'center',
+  },
+  modalImage: {
+    width: 100,
+    height: 100,
+    marginVertical: 20,
+  },
+  modalTitle: {
+    fontSize: 20,
+    color: 'black',
+    fontWeight: 'bold',
+  },
+  modalSubtitle: {
+    fontSize: 15,
+    width: '100%',
+    fontWeight: '400',
+    color: 'black',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+  modalCloseButton: {
+    fontSize: 16,
+  },
+  addAccountGreen: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    paddingHorizontal: 7,
+    paddingVertical: 2,
+    marginTop: 10,
+    backgroundColor: '#007236',
+    paddingRight: 12,
+  },
   accounts: {
     padding: 10,
   },
@@ -35,7 +79,16 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 10,
   },
-
+  addAccount: {
+    height: 35,
+    paddingHorizontal: 10,
+    borderRadius: 50,
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+  },
   title: {
     color: '#222222',
     fontSize: 25,

@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import OTP from '../screens/Transfer/OTP';
 import Transfer from '../screens/Transfer/Transfer';
 import {View} from 'react-native';
+import {TopBar} from '../components';
 
 const routes = [
   {

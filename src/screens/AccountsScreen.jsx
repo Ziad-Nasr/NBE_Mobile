@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import styles from '../styles/screens/AccountsScreen.style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {TopBar} from '../components';
 
 export const AccountsScreen = () => {
   const [users, setUsers] = useState([
@@ -39,68 +40,106 @@ export const AccountsScreen = () => {
     {name: 'Mohamed', image: require('./../../assets/media/avatars/30.jpg')},
   ]);
   const [viewMode, setViewMode] = useState('grid');
+
   return (
     <View style={styles.accounts}>
+      <TopBar />
       <View style={styles.topAccountScreen}>
         <Text style={styles.title}>Beneficiaries</Text>
-        <View style={styles.buttonsContainer}>
-          <TouchableOpacity
-            onPress={() => setViewMode('grid')}
-            style={[styles.button, viewMode === 'grid' && styles.activeButton]}>
-            {/* <Text style={styles.buttonText}>Grid</Text> */}
-            <Ionicons name="grid" size={20} color="#d5d5d5" />
-          </TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity
+              onPress={() => setViewMode('grid')}
+              style={[
+                styles.button,
+                viewMode === 'grid' && styles.activeButton,
+              ]}>
+              <Ionicons name="grid" size={20} color="#d5d5d5" />
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => setViewMode('list')}
-            style={[styles.button, viewMode === 'list' && styles.activeButton]}>
-            {/* <Text style={styles.buttonText}>List</Text> */}
-            <Ionicons name="list" size={20} color="#d5d5d5" />
+            <TouchableOpacity
+              onPress={() => setViewMode('list')}
+              style={[
+                styles.button,
+                viewMode === 'list' && styles.activeButton,
+              ]}>
+              <Ionicons name="list" size={20} color="#d5d5d5" />
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity style={styles.addAccount}>
+            <Ionicons name="add" size={30} color="#007236" />
+            <Text>Add</Text>
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView
-        contentContainerStyle={
-          viewMode === 'grid' ? styles.scrollAreaGrid : styles.scrollAreaList
-        }>
-        {users.map((user, i) => {
-          return (
-            <View
-              key={i}
-              style={
-                viewMode === 'grid' ? styles.userCardGrid : styles.userCardList
-              }>
-              <Image style={styles.image} source={user.image} />
-              {viewMode === 'grid' && (
-                <Text style={styles.name}>{user.name}</Text>
-              )}
-              {viewMode === 'list' && (
-                <View style={styles.listInfo}>
+      {!users.length ? (
+        <View style={styles.noBeneficiaries}>
+          <View style={styles.modalContent}>
+            <Image
+              source={require('../../assets/checked.png')}
+              style={styles.modalImage}
+            />
+            <Text style={styles.modalTitle}>No Beneficiaries</Text>
+            <Text style={styles.modalSubtitle}>
+              You don't have beneficiaries. Add some so you can send money.
+            </Text>
+            <TouchableOpacity style={styles.addAccountGreen}>
+              <Ionicons name="add" size={30} color="#fff" />
+              <Text style={{color: 'white'}}>Add</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      ) : (
+        <ScrollView
+          contentContainerStyle={
+            viewMode === 'grid' ? styles.scrollAreaGrid : styles.scrollAreaList
+          }>
+          {users.map((user, i) => {
+            return (
+              <View
+                key={i}
+                style={
+                  viewMode === 'grid'
+                    ? styles.userCardGrid
+                    : styles.userCardList
+                }>
+                <Image style={styles.image} source={user.image} />
+                {viewMode === 'grid' && (
                   <Text style={styles.name}>{user.name}</Text>
-                  <View style={styles.listInfoItem}>
-                    <View style={styles.microImageContainer}>
-                      <Image
-                        source={require('../../assets/call.png')}
-                        style={styles.microImage}
-                      />
+                )}
+                {viewMode === 'list' && (
+                  <View style={styles.listInfo}>
+                    <Text style={styles.name}>{user.name}</Text>
+                    <View style={styles.listInfoItem}>
+                      <View style={styles.microImageContainer}>
+                        <Image
+                          source={require('../../assets/call.png')}
+                          style={styles.microImage}
+                        />
+                      </View>
+                      <Text>+20 123 456 7890</Text>
                     </View>
-                    <Text>+20 123 456 7890</Text>
-                  </View>
-                  <View style={styles.listInfoItem}>
-                    <View style={styles.microImageContainer}>
-                      <Image
-                        source={require('../../assets/dollar.png')}
-                        style={styles.microImage}
-                      />
+                    <View style={styles.listInfoItem}>
+                      <View style={styles.microImageContainer}>
+                        <Image
+                          source={require('../../assets/dollar.png')}
+                          style={styles.microImage}
+                        />
+                      </View>
+                      <Text>$802,828,61</Text>
                     </View>
-                    <Text>$802,828,61</Text>
                   </View>
-                </View>
-              )}
-            </View>
-          );
-        })}
-      </ScrollView>
+                )}
+              </View>
+            );
+          })}
+        </ScrollView>
+      )}
     </View>
   );
 };
