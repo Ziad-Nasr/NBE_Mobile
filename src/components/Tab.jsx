@@ -23,6 +23,7 @@ import {TopBar} from './TopBar';
 import Transfer from '../screens/Transfer/Transfer';
 import TransferStacks from '../navigations/TransferStacks';
 import MapScreen from '../screens/MapScreen';
+import BeneficiaryStacks from '../navigations/BeneficiaryStacks';
 
 export const Tab = ({navigation}) => {
   // const navigation = useNavigation(); // Use the hook to get navigation object
@@ -96,7 +97,7 @@ export const Tab = ({navigation}) => {
         />
         <Tab.Screen
           name="beneficiaries"
-          component={AccountsScreen}
+          component={BeneficiaryStacks}
           options={{headerShown: false}}
         />
         <Tab.Screen

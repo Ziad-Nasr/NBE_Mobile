@@ -64,7 +64,10 @@ const Transfer = ({}) => {
           defaultValue="Savings account - $500,000.00"
         />
         <TextField />
-        <ReasonField />
+        <ReasonField
+          title={'Reason for transfer'}
+          placeholder={'Add a reason'}
+        />
       </View>
       <View style={{marginHorizontal: 30, marginBottom: 40}}>
         <Button

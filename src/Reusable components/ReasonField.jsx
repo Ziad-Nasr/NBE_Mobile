@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, TextInput, View} from 'react-native';
 
-const ReasonField = ({navigation}) => {
+const ReasonField = ({navigation, title, placeholder}) => {
   return (
     <View style={styles.textFieldContainer}>
-      <Text style={styles.textFieldLabel}>Reason of Transfer</Text>
-      <TextInput placeholder="Reason of transfer" style={styles.defaultStyle} />
+      <Text style={styles.textFieldLabel}>{title}</Text>
+      <TextInput placeholder={placeholder} style={styles.defaultStyle} />
     </View>
   );
 };
@@ -16,7 +16,8 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   textFieldContainer: {
     margin: 10,
-    padding: 10,
+    paddingTop: 7,
+    paddingHorizontal: 10,
     backgroundColor: '#ffffff',
     borderRadius: 10,
   },

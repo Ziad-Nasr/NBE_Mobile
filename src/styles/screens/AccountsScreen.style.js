@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
   noBeneficiaries: {
-    height: '80%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -52,7 +51,7 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: 7,
   },
   buttonsContainer: {
     flexDirection: 'row',

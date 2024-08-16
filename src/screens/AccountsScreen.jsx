@@ -4,7 +4,7 @@ import styles from '../styles/screens/AccountsScreen.style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TopBar} from '../components';
 
-export const AccountsScreen = () => {
+export const AccountsScreen = ({navigation}) => {
   const [users, setUsers] = useState([
     {name: 'Alexandar', image: require('./../../assets/media/picture.jpg')},
     {name: 'Elsa', image: require('./../../assets/media/avatars/1.png')},
@@ -71,7 +71,11 @@ export const AccountsScreen = () => {
               <Ionicons name="list" size={20} color="#d5d5d5" />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.addAccount}>
+          <TouchableOpacity
+            style={styles.addAccount}
+            onPress={() => {
+              navigation.navigate('AddBeneficiary');
+            }}>
             <Ionicons name="add" size={30} color="#007236" />
             <Text>Add</Text>
           </TouchableOpacity>

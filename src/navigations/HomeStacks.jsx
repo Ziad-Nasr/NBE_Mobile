@@ -38,7 +38,7 @@ const Stack = createNativeStackNavigator();
 const HomeStacks = () => {
   return (
     <View style={{flex: 1}}>
-      <TopBar />
+      {/* <TopBar /> */}
       <Stack.Navigator>
         {routes.map((route, index) => (
           <Stack.Screen

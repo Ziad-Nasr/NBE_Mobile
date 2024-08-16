@@ -4,6 +4,7 @@ import {View, Text, Image, ScrollView} from 'react-native';
 import styles from './../styles/screens/CardsScreen.style';
 import History from '../components/History';
 import Card from '../components/Card';
+import {TopBar} from '../components';
 
 // function wait(ms) {
 //   const start = new Date().getTime();
@@ -21,6 +22,7 @@ export const CardsScreen = () => {
 
   return (
     <View style={styles.accounts}>
+      <TopBar />
       <Text style={styles.title}>Cards</Text>
       <Card />
       <History />
