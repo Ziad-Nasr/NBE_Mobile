@@ -15,6 +15,8 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 10,
+    backgroundColor: '#fff',
+    borderRadius: 30,
   },
   button: {
     width: 30,
@@ -22,11 +24,11 @@ export default styles = StyleSheet.create({
     borderRadius: 30, // Makes the button round
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ccc', // Default background color
-    marginHorizontal: 10,
+    backgroundColor: '#fff', // Default background color
+    marginHorizontal: 5,
   },
   activeButton: {
-    backgroundColor: '#007BFF', // Active button color
+    backgroundColor: '#007236', // Active button color
   },
   buttonText: {
     color: '#fff',
@@ -56,17 +58,18 @@ export default styles = StyleSheet.create({
   userCardGrid: {
     width: 80,
     height: 80,
-    padding: 5,
+    padding: 4,
     backgroundColor: '#fff',
     borderRadius: 10,
     margin: 3,
     marginHorizontal: 7,
     alignItems: 'center',
+    marginBottom: 15,
   },
 
   userCardList: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     padding: 10,
     backgroundColor: '#fff',
     borderRadius: 10,
@@ -74,13 +77,33 @@ export default styles = StyleSheet.create({
     marginHorizontal: 10,
     justifyContent: 'flex-start',
   },
-
+  listInfo: {
+    alignItems: 'flex-start',
+    marginLeft: 5,
+  },
+  listInfoItem: {
+    flexDirection: 'row',
+    marginVertical: 2,
+  },
+  microImageContainer: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: '#e4e4e4',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 5,
+  },
+  microImage: {
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+  },
   image: {
-    width: 50,
-    height: 50,
+    width: 70,
+    height: 70,
     borderRadius: 10,
     marginBottom: 5,
-    marginRight: 10,
   },
 
   name: {

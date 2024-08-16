@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import styles from '../styles/screens/AccountsScreen.style';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const AccountsScreen = () => {
   const [users, setUsers] = useState([
@@ -46,13 +47,15 @@ export const AccountsScreen = () => {
           <TouchableOpacity
             onPress={() => setViewMode('grid')}
             style={[styles.button, viewMode === 'grid' && styles.activeButton]}>
-            <Text style={styles.buttonText}>Grid</Text>
+            {/* <Text style={styles.buttonText}>Grid</Text> */}
+            <Ionicons name="grid" size={20} color="#d5d5d5" />
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => setViewMode('list')}
             style={[styles.button, viewMode === 'list' && styles.activeButton]}>
-            <Text style={styles.buttonText}>List</Text>
+            {/* <Text style={styles.buttonText}>List</Text> */}
+            <Ionicons name="list" size={20} color="#d5d5d5" />
           </TouchableOpacity>
         </View>
       </View>
@@ -68,7 +71,32 @@ export const AccountsScreen = () => {
                 viewMode === 'grid' ? styles.userCardGrid : styles.userCardList
               }>
               <Image style={styles.image} source={user.image} />
-              <Text style={styles.name}>{user.name}</Text>
+              {viewMode === 'grid' && (
+                <Text style={styles.name}>{user.name}</Text>
+              )}
+              {viewMode === 'list' && (
+                <View style={styles.listInfo}>
+                  <Text style={styles.name}>{user.name}</Text>
+                  <View style={styles.listInfoItem}>
+                    <View style={styles.microImageContainer}>
+                      <Image
+                        source={require('../../assets/call.png')}
+                        style={styles.microImage}
+                      />
+                    </View>
+                    <Text>+20 123 456 7890</Text>
+                  </View>
+                  <View style={styles.listInfoItem}>
+                    <View style={styles.microImageContainer}>
+                      <Image
+                        source={require('../../assets/dollar.png')}
+                        style={styles.microImage}
+                      />
+                    </View>
+                    <Text>$802,828,61</Text>
+                  </View>
+                </View>
+              )}
             </View>
           );
         })}
