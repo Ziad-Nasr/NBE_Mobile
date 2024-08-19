@@ -39,4 +39,32 @@ export default styles = StyleSheet.create({
   mh15: {
     marginHorizontal: 15,
   },
+  passwordItem: {
+    flexDirection: 'row',
+    // justifyContent: 'center',
+    alignItems: 'center',
+    width: '45%',
+  },
+  Off: {
+    width: 10,
+    height: 10,
+    borderRadius: 50,
+    backgroundColor: 'gray',
+    marginRight: 5,
+  },
+  On: {
+    width: 10,
+    height: 10,
+    borderRadius: 50,
+    backgroundColor: '#007236',
+    marginRight: 5,
+  },
+  dualItems: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 9,
+  },
+  loginButton: {
+    marginTop: 25,
+  },
 });
