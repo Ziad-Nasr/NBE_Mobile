@@ -1,3 +1,4 @@
+import {Tab} from '../components/Tab';
 import {
   AccountsScreen,
   CardsScreen,
@@ -15,12 +16,16 @@ import TransferStacks from './TransferStacks';
 
 export const Navigations = [
   {
+    name: 'login',
+    component: LoginScreen,
+  },
+  {
     name: 'signup',
     component: SignupScreen,
   },
   {
-    name: 'login',
-    component: LoginScreen,
+    name: 'tab',
+    component: Tab,
   },
   {
     name: 'homeStacks',

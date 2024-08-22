@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import styles from '../styles/components/LoginForm.style';
 import {Button} from '../Reusable components/Button';
-export function LoginForm() {
+export function LoginForm({navigation}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   return (
@@ -50,7 +50,12 @@ export function LoginForm() {
       </View>
       <View style={styles.bottomButtonLoginForm}>
         <View style={styles.loginButton}>
-          <Button title="Login" myOnClick={()=>{navigator.navigate("Navigator")}} />
+          <Button
+            title="Login"
+            myOnClick={() => {
+              navigation.navigate('tab');
+            }}
+          />
         </View>
         <View>
           <Image
@@ -61,7 +66,13 @@ export function LoginForm() {
       </View>
       <View style={styles.forgotPassword}>
         <Text style={styles.white}>Don't have an account?</Text>
-        <Text style={styles.signUpLoginForm}>Sign up</Text>
+        <Text
+          style={styles.signUpLoginForm}
+          onPress={() => {
+            navigation.navigate('signup');
+          }}>
+          Sign up
+        </Text>
       </View>
       <View style={styles.bottomLoginForm}>
         <View style={styles.forgotPassword}>

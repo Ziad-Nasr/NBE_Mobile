@@ -16,7 +16,12 @@ const Dropdown = ({
   const [dropdownItems, setItems] = useState(items);
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        containerStyle,
+        {zIndex: open ? 1000 : 1}, // Adjust zIndex based on dropdown state
+      ]}>
       {label && <Text style={styles.label}>{label}</Text>}
       <DropDownPicker
         open={open}
@@ -25,7 +30,7 @@ const Dropdown = ({
         setOpen={setOpen}
         setValue={setValue}
         setItems={setItems}
-        containerStyle={[styles.defaultContainerStyle, containerStyle]}
+        containerStyle={[styles.defaultContainerStyle, style]}
         style={[styles.defaultStyle, style]}
         dropDownContainerStyle={[
           styles.defaultDropDownStyle,
@@ -45,7 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   label: {
-    color: '#00000',
+    color: '#000000',
     fontWeight: 'bold',
   },
   defaultContainerStyle: {

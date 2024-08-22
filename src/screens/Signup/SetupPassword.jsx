@@ -4,6 +4,7 @@ import TopSignup from '../../components/TopSignup';
 import {Button} from '../../Reusable components/Button';
 import styles from '../../styles/screens/Signup/SetupPassword.style';
 import {
+  Equal,
   has8Char,
   hasLower,
   hasNumber,
@@ -14,44 +15,6 @@ import {
 export default function SetupPassword({increment, decrement}) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordItems, setPasswordItems] = useState({
-    lower: 'Off',
-    upper: 'Off',
-    minChar: 'Off',
-    number: 'Off',
-    special: 'Off',
-  });
-  const handlePassword = text => {
-    if (hasUpper(text)) {
-      setPasswordItems(prev => ({...prev, upper: 'On'}));
-    } else {
-      setPasswordItems(prev => ({...prev, upper: 'Off'}));
-    }
-
-    if (hasLower(text)) {
-      setPasswordItems(prev => ({...prev, lower: 'On'}));
-    } else {
-      setPasswordItems(prev => ({...prev, lower: 'Off'}));
-    }
-
-    if (has8Char(text)) {
-      setPasswordItems(prev => ({...prev, minChar: 'On'}));
-    } else {
-      setPasswordItems(prev => ({...prev, minChar: 'Off'}));
-    }
-
-    if (hasNumber(text)) {
-      setPasswordItems(prev => ({...prev, number: 'On'}));
-    } else {
-      setPasswordItems(prev => ({...prev, number: 'Off'}));
-    }
-
-    if (hasSpecial(text)) {
-      setPasswordItems(prev => ({...prev, special: 'On'}));
-    } else {
-      setPasswordItems(prev => ({...prev, special: 'Off'}));
-    }
-  };
 
   return (
     <View style={styles.Verification}>
@@ -72,10 +35,10 @@ export default function SetupPassword({increment, decrement}) {
               secureTextEntry={true}
               placeholder="********"
               placeholderTextColor={'#007236'}
-              // value={password}
+              value={password}
               style={styles.loginInputPassword}
               onChangeText={text => {
-                handlePassword(text);
+                setPassword(text);
               }}
             />
           </View>
@@ -91,7 +54,7 @@ export default function SetupPassword({increment, decrement}) {
               secureTextEntry={true}
               placeholder="Re-write your password"
               placeholderTextColor={'#007236'}
-              // value={confirmPassword}
+              value={confirmPassword}
               style={styles.loginInputPassword}
               onChangeText={text => {
                 setConfirmPassword(text);
@@ -101,27 +64,36 @@ export default function SetupPassword({increment, decrement}) {
         </View>
         <View style={styles.dualItems}>
           <View style={styles.passwordItem}>
-            <View style={styles[passwordItems.lower]}></View>
+            <View style={styles[hasLower(password) ? 'On' : 'Off']}></View>
             <Text>Lower Case Letter</Text>
           </View>
           <View style={styles.passwordItem}>
-            <View style={styles[passwordItems.upper]}></View>
+            <View style={styles[hasUpper(password) ? 'On' : 'Off']}></View>
             <Text>Upper Case Letter</Text>
           </View>
         </View>
         <View style={styles.dualItems}>
           <View style={styles.passwordItem}>
-            <View style={styles[passwordItems.minChar]}></View>
+            <View style={styles[has8Char(password) ? 'On' : 'Off']}></View>
             <Text>Minimum 8 Character</Text>
           </View>
           <View style={styles.passwordItem}>
-            <View style={styles[passwordItems.number]}></View>
+            <View style={styles[hasNumber(password) ? 'On' : 'Off']}></View>
             <Text>Number</Text>
           </View>
         </View>
-        <View style={styles.passwordItem}>
-          <View style={styles[passwordItems.special]}></View>
-          <Text>Special Character</Text>
+        <View style={styles.dualItems}>
+          <View style={styles.passwordItem}>
+            <View style={styles[hasSpecial(password) ? 'On' : 'Off']}></View>
+            <Text>Special Character</Text>
+          </View>
+          <View style={styles.passwordItem}>
+            <View
+              style={
+                styles[Equal(password, confirmPassword) ? 'On' : 'Off']
+              }></View>
+            <Text>Matching Passwords</Text>
+          </View>
         </View>
         <View style={styles.loginButton}>
           <Button title="Submit" myOnClick={increment} />
