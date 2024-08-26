@@ -1,21 +1,18 @@
-import {
-  StyleSheet
-} from 'react-native';
-
+import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
-
   topBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
+    
   },
 
   menu: {
     width: 40,
     height: 40,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   user: {
@@ -29,13 +26,13 @@ export default styles = StyleSheet.create({
     height: 40,
     borderRadius: 10,
     marginRight: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.20,
-    shadowRadius: 1.00,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.0,
   },
 
   userInfo: {
@@ -48,7 +45,7 @@ export default styles = StyleSheet.create({
 
   userName: {
     color: '#333333',
-    fontWeight: '700'
+    fontWeight: '700',
   },
 
   notifications: {
@@ -58,14 +55,13 @@ export default styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.20,
-    shadowRadius: 1.00,
+    shadowOpacity: 0.2,
+    shadowRadius: 1.0,
     elevation: 1,
-  }
-
+  },
 });
