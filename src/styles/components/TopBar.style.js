@@ -5,7 +5,6 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 10,
-    
   },
 
   menu: {

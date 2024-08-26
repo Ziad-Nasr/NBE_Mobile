@@ -1,3 +1,4 @@
+import DrawerNavigator from '../components/Drawer';
 import {Tab} from '../components/Tab';
 import {
   AccountsScreen,
@@ -22,6 +23,10 @@ export const Navigations = [
   {
     name: 'signup',
     component: SignupScreen,
+  },
+  {
+    name: 'drawer',
+    component: DrawerNavigator,
   },
   {
     name: 'tab',

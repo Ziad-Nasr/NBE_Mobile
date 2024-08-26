@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -24,6 +24,7 @@ import Transfer from '../screens/Transfer/Transfer';
 import TransferStacks from '../navigations/TransferStacks';
 import MapScreen from '../screens/MapScreen';
 import BeneficiaryStacks from '../navigations/BeneficiaryStacks';
+import {ThemeContext} from '../ThemeContext';
 
 export const Tab = ({navigation}) => {
   // const navigation = useNavigation(); // Use the hook to get navigation object
@@ -31,15 +32,19 @@ export const Tab = ({navigation}) => {
 
   const CustomTabBarButton = ({children, onPress, isActive}) => (
     <TouchableOpacity
-      style={isActive ? styles.activeNavBtn : styles.navBtn}
+      style={
+        isActive
+          ? styles.activeNavBtn
+          : [styles.navBtn, {backgroundColor: theme.cardBackground}]
+      }
       activeOpacity={1}
       onPress={onPress}>
       {children}
     </TouchableOpacity>
   );
-
+  const {theme} = useContext(ThemeContext);
   return (
-    <View style={styles.navigator}>
+    <View style={[styles.navigator, {backgroundColor: theme.background}]}>
       <Tab.Navigator
         initialRouteName="home"
         screenOptions={({route}) => ({
@@ -48,6 +53,7 @@ export const Tab = ({navigation}) => {
             padding: 5,
             borderTopStartRadius: 15,
             borderTopEndRadius: 15,
+            backgroundColor: theme.background,
           },
           tabBarLabelStyle: {
             fontSize: 10,
@@ -74,7 +80,7 @@ export const Tab = ({navigation}) => {
               <Ionicons
                 name={iconName}
                 size={45}
-                color={focused ? '#fff' : '#B7B7B7'}
+                color={focused ? '#eee' : '#B7B7B7'}
               />
             );
           },

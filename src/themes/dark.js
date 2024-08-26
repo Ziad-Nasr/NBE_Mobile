@@ -9,4 +9,6 @@ export default {
   buttonText: '#BB86FC',
   inputBackground: '#1E1E1E',
   inputText: '#FFFFFF',
+  buttonColor: 'white',
+  reverseButtonContainer: '#B7B7B7',
 };

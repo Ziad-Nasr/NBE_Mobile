@@ -53,7 +53,7 @@ export function LoginForm({navigation}) {
           <Button
             title="Login"
             myOnClick={() => {
-              navigation.navigate('tab');
+              navigation.navigate('drawer');
             }}
           />
         </View>

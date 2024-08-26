@@ -21,7 +21,7 @@ export default styles = StyleSheet.create({
   userCard: {
     width: 80,
     padding: 5,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     borderRadius: 10,
     marginEnd: 10,
   },

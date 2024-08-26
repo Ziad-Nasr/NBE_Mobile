@@ -3,8 +3,7 @@ import {StyleSheet} from 'react-native';
 export default styles = StyleSheet.create({
   tabContainer: {
     // flex: 1,
-    height: '100%',
-    backgroundColor: '#F1F3FB',
+    // backgroundColor: 'blue',
   },
   navigator: {
     backgroundColor: '#fff',
@@ -35,7 +34,7 @@ export default styles = StyleSheet.create({
   },
 
   navBtn: {
-    backgroundColor: '#F1F3FB',
+    backgroundColor: 'black',
     height: 75,
     width: 75,
     borderRadius: 15,

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 
 import styles from './../styles/components/History.style';
+import {ThemeContext} from '../ThemeContext';
 
 export const History = () => {
   const historyData = [
@@ -41,23 +42,47 @@ export const History = () => {
       amount: 5140.0,
     },
   ];
+
+  const {theme} = useContext(ThemeContext);
+
   return (
     <View style={styles.history}>
       <View style={styles.topHistory}>
-        <Text style={[styles.black, styles.title]}>History</Text>
-        <Text style={[styles.ViewAll]}>View All</Text>
+        <Text style={[styles.black, styles.title, {color: theme.primaryText}]}>
+          History
+        </Text>
+        <Text style={[styles.ViewAll, {color: theme.secondaryText}]}>
+          View All
+        </Text>
       </View>
       <ScrollView>
         {historyData.map((item, index) => (
           <View>
             <View style={styles.historyBody} key={index}>
               <View>
-                <Text style={[styles.black, styles.itemTitle]}>
+                <Text
+                  style={[
+                    styles.black,
+                    styles.itemTitle,
+                    {color: theme.primaryText},
+                  ]}>
                   {item.title}
                 </Text>
-                <Text style={[styles.black, styles.itemDate]}>{item.date}</Text>
+                <Text
+                  style={[
+                    styles.black,
+                    styles.itemDate,
+                    {color: theme.secondaryText},
+                  ]}>
+                  {item.date}
+                </Text>
               </View>
-              <Text style={[styles.black, styles.itemAmount]}>
+              <Text
+                style={[
+                  styles.black,
+                  styles.itemAmount,
+                  {color: theme.primaryText},
+                ]}>
                 ${item.amount}
               </Text>
             </View>

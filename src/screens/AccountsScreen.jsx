@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import styles from '../styles/screens/AccountsScreen.style';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TopBar} from '../components';
+import {ThemeContext} from '../ThemeContext';
 
 export const AccountsScreen = ({navigation}) => {
   const [users, setUsers] = useState([
@@ -41,43 +42,53 @@ export const AccountsScreen = ({navigation}) => {
   ]);
   const [viewMode, setViewMode] = useState('grid');
 
+  const {theme} = useContext(ThemeContext);
+
   return (
-    <View style={styles.accounts}>
+    <View style={[styles.accounts, {backgroundColor: theme.background}]}>
       <TopBar />
       <View style={styles.topAccountScreen}>
-        <Text style={styles.title}>Beneficiaries</Text>
+        <Text style={[styles.title, {color: theme.primaryText}]}>
+          Beneficiaries
+        </Text>
         <View
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <View style={styles.buttonsContainer}>
+          <View
+            style={[
+              styles.buttonsContainer,
+              {backgroundColor: theme.cardBackground},
+            ]}>
             <TouchableOpacity
               onPress={() => setViewMode('grid')}
               style={[
                 styles.button,
+                {backgroundColor: theme.background},
                 viewMode === 'grid' && styles.activeButton,
               ]}>
-              <Ionicons name="grid" size={20} color="#d5d5d5" />
+              <Ionicons name="grid" size={20} color={theme.buttonColor} />
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => setViewMode('list')}
               style={[
                 styles.button,
+                {backgroundColor: theme.background},
                 viewMode === 'list' && styles.activeButton,
               ]}>
               <Ionicons name="list" size={20} color="#d5d5d5" />
             </TouchableOpacity>
           </View>
           <TouchableOpacity
-            style={styles.addAccount}
+            style={[styles.addAccount, {backgroundColor: theme.cardBackground}]}
             onPress={() => {
               navigation.navigate('AddBeneficiary');
             }}>
-            <Ionicons name="add" size={30} color="#007236" />
-            <Text>Add</Text>
+            <Ionicons name="add" size={30} color={theme.buttonColor} />
+            <Text style={{color: theme.primaryText}}>Add</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -107,18 +118,28 @@ export const AccountsScreen = ({navigation}) => {
             return (
               <View
                 key={i}
-                style={
+                style={[
                   viewMode === 'grid'
-                    ? styles.userCardGrid
-                    : styles.userCardList
-                }>
+                    ? [
+                        styles.userCardGrid,
+                        {backgroundColor: theme.cardBackground},
+                      ]
+                    : [
+                        styles.userCardList,
+                        {backgroundColor: theme.cardBackground},
+                      ],
+                ]}>
                 <Image style={styles.image} source={user.image} />
                 {viewMode === 'grid' && (
-                  <Text style={styles.name}>{user.name}</Text>
+                  <Text style={[styles.name, {color: theme.primaryText}]}>
+                    {user.name}
+                  </Text>
                 )}
                 {viewMode === 'list' && (
-                  <View style={styles.listInfo}>
-                    <Text style={styles.name}>{user.name}</Text>
+                  <View style={[styles.listInfo]}>
+                    <Text style={[styles.name, {color: theme.primaryText}]}>
+                      {user.name}
+                    </Text>
                     <View style={styles.listInfoItem}>
                       <View style={styles.microImageContainer}>
                         <Image
@@ -126,7 +147,9 @@ export const AccountsScreen = ({navigation}) => {
                           style={styles.microImage}
                         />
                       </View>
-                      <Text>+20 123 456 7890</Text>
+                      <Text style={{color: theme.secondaryText}}>
+                        +20 123 456 7890
+                      </Text>
                     </View>
                     <View style={styles.listInfoItem}>
                       <View style={styles.microImageContainer}>
