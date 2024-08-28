@@ -8,7 +8,7 @@ export default function TopSignup(props) {
   const {theme} = useContext(ThemeContext);
   return (
     <View>
-      <View style={styles.upperLogin}>
+      <View style={[styles.upperLogin, {backgroundColor: theme.background}]}>
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => {

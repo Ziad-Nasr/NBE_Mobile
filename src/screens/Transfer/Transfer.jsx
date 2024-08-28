@@ -48,6 +48,7 @@ const Transfer = ({}) => {
         justifyContent: 'space-between',
         height: '100%',
         backgroundColor: theme.background,
+        // flex: 1,
       }}>
       <View>
         <TopSignup title="Transfer" />

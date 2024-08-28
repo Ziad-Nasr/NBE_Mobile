@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Text, TextInput, View} from 'react-native';
 
 const TextField = () => {
+  const {theme, isDarkMode} = useContext(ThemeContext);
   const [amount, setAmount] = useState('');
 
   const formatAmount = value => {
@@ -21,18 +22,31 @@ const TextField = () => {
   const handleAmountChange = value => {
     // Update the state with the formatted value
     const formattedValue = formatAmount(value);
-    setAmount(formattedValue);
+
+    if (formattedValue === '$ NaN') {
+      setAmount('');
+    } else setAmount(formattedValue);
   };
 
   return (
-    <View style={styles.textFieldContainer}>
-      <Text style={styles.textFieldLabel}>Amount to transfer</Text>
+    <View
+      style={[
+        styles.textFieldContainer,
+        {backgroundColor: theme.cardBackground},
+      ]}>
+      <Text style={[styles.textFieldLabel, {color: theme.secondaryText}]}>
+        Amount to transfer
+      </Text>
       <TextInput
         placeholder="$0.00"
         value={amount}
         keyboardType="numeric"
         onChangeText={handleAmountChange}
-        style={styles.defaultStyle}
+        style={[
+          styles.defaultStyle,
+          {color: theme.primaryText, backgroundColor: theme.background},
+        ]}
+        placeholderTextColor={theme.primaryText}
       />
     </View>
   );
@@ -41,6 +55,7 @@ const TextField = () => {
 export default TextField;
 
 import {StyleSheet} from 'react-native';
+import {ThemeContext} from '../ThemeContext';
 const styles = StyleSheet.create({
   textFieldContainer: {
     margin: 10,

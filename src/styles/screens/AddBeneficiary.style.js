@@ -2,13 +2,13 @@ import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
   addBeneficiary: {
-    flex: 1,
-    // justifyContent: 'space-between',
-    // height: '70%',
+    // flex: 1,
+    justifyContent: 'space-between',
+    height: '100%',
   },
   uploadImageBeneficiary: {
     alignItems: 'center',
-    marginVertical: 10,
+    marginBottom: 0,
   },
   firstLastName: {
     flexDirection: 'row',

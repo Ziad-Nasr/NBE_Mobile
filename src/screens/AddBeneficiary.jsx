@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text} from 'react-native';
 import TopSignup from '../components/TopSignup';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -6,8 +6,10 @@ import ReasonField from '../Reusable components/ReasonField';
 import styles from '../styles/screens/AddBeneficiary.style';
 import Dropdown from '../Reusable components/DropDown';
 import {Button} from '../Reusable components/Button';
+import {ThemeContext} from '../ThemeContext';
 
 const AddBeneficiary = () => {
+  const {theme, isDarkMode} = useContext(ThemeContext);
   const transferTo = [
     {
       label: '042-653214521245 - $2,145,5874.25',
@@ -23,17 +25,21 @@ const AddBeneficiary = () => {
     },
   ];
   return (
-    <>
+    <View style={[styles.addBeneficiary, {backgroundColor: theme.background}]}>
       <TopSignup />
-      <View style={styles.addBeneficiary}>
+      <View style={[{backgroundColor: theme.background}]}>
         <View>
-          <View style={styles.uploadImageBeneficiary}>
+          <View
+            style={[
+              styles.uploadImageBeneficiary,
+              {backgroundColor: theme.background},
+            ]}>
             <Ionicons
               name="person-add"
               size={50}
               color="black"
               style={{
-                backgroundColor: 'white',
+                backgroundColor: isDarkMode ? theme.cardBackground : 'white',
                 color: 'green',
                 borderRadius: 20,
                 padding: 30,
@@ -57,9 +63,11 @@ const AddBeneficiary = () => {
           <ReasonField title={'Phone Number'} placeholder={'123456789'} />
           <ReasonField title={'Email'} placeholder={'......@gmail.com'} />
         </View>
-        <Button title={'Add Beneficiary'} />
+        <View style={{marginBottom: 5}}>
+          <Button title={'Add Beneficiary'} />
+        </View>
       </View>
-    </>
+    </View>
   );
 };
 

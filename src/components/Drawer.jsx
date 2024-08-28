@@ -3,11 +3,7 @@ import {
   createDrawerNavigator,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
-import HomeScreen from '../screens/HomeScreen';
 import {AccountsScreen} from '../screens/AccountsScreen';
-import CardsScreen from '../screens/CardsScreen';
-import UtilsScreen from '../screens/UtilsScreen';
-import HistoryScreen from '../screens/HistoryScreen';
 import {Image, StyleSheet, Switch, Text, TouchableOpacity} from 'react-native';
 import {TopBar} from './TopBar'; // Import TopBar
 import {Tab} from './Tab';
