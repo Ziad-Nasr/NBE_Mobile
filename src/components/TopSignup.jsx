@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from '../styles/screens/Signup/TopSignup.style';
 import {useNavigation} from '@react-navigation/native';
+import {ThemeContext} from '../ThemeContext';
 export default function TopSignup(props) {
   const navigation = useNavigation();
+  const {theme} = useContext(ThemeContext);
   return (
     <View>
       <View style={styles.upperLogin}>
@@ -20,7 +22,11 @@ export default function TopSignup(props) {
         />
       </View>
       <View>
-        {props.title && <Text style={styles.title}>{props.title}</Text>}
+        {props.title && (
+          <Text style={[styles.title, {color: theme.primaryText}]}>
+            {props.title}
+          </Text>
+        )}
         {props.subtitle && (
           <Text style={styles.subtitle}>{props.subtitle}</Text>
         )}

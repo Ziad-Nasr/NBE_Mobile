@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {TextInput, View} from 'react-native';
 import TopSignup from '../../components/TopSignup';
 import Dropdown from '../../Reusable components/DropDown';
@@ -6,8 +6,10 @@ import TextField from '../../Reusable components/TextField';
 import ReasonField from '../../Reusable components/ReasonField';
 import {Button} from '../../Reusable components/Button';
 import {useNavigation} from '@react-navigation/native';
+import {ThemeContext} from '../../ThemeContext';
 
 const Transfer = ({}) => {
+  const {theme} = useContext(ThemeContext);
   const navigation = useNavigation();
   const transferType = [
     {label: 'Between your accounts', value: 'Between your accounts'},
@@ -45,6 +47,7 @@ const Transfer = ({}) => {
       style={{
         justifyContent: 'space-between',
         height: '100%',
+        backgroundColor: theme.background,
       }}>
       <View>
         <TopSignup title="Transfer" />

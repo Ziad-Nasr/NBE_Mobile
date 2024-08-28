@@ -16,6 +16,10 @@ import HomeStacks from './HomeStacks';
 import TransferStacks from './TransferStacks';
 
 export const Navigations = [
+  // {
+  //   name: 'trans',
+  //   component: Transfer,
+  // },
   {
     name: 'login',
     component: LoginScreen,

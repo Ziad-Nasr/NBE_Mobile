@@ -18,10 +18,19 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 const Drawer = createDrawerNavigator();
 
 const CustomDrawerContent = props => {
-  const {theme, isDarkMode, setIsDarkMode} = useContext(ThemeContext);
+  const {theme, toggleDarkMode} = useContext(ThemeContext);
+  try {
+    console.log('Toggle');
+    // const {toggleDarkMode} = useContext(ThemeContext);
+    console.log('Toggle 2');
+  } catch {
+    console.log('Test');
+  }
+  // const {theme} = useContext(ThemeContext);
+
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {
-    setIsDarkMode(prev => !prev);
+    // setIsDarkMode(prev => !prev);
     setIsEnabled(previousState => !previousState);
   };
   return (
@@ -36,7 +45,10 @@ const CustomDrawerContent = props => {
               style={styles.drawerUpperLogo}
             />
             <TouchableOpacity
-              style={styles.translateButton}
+              style={[
+                styles.translateButton,
+                {backgroundColor: theme.cardBackground},
+              ]}
               onPress={() => {
                 alert('Arabic Translation Soon');
               }}>
@@ -66,14 +78,14 @@ const CustomDrawerContent = props => {
             />
             <CustomDrawerItem
               label={'Offers'}
-              // onPress={() => setIsDarkMode(prevMode => !prevMode)}
+              // onPress={() => toggleDarkMode()}
             />
             <CustomDrawerItem
               label={'Dark Mode'}
               mySwitch={true}
               isEnabled={isEnabled}
               toggleSwitch={toggleSwitch}
-              onPress={() => setIsDarkMode(prevMode => !prevMode)}
+              onPress={() => toggleDarkMode()}
             />
           </View>
         </View>
@@ -89,7 +101,11 @@ const CustomDrawerContent = props => {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.userCardList}>
+          <View
+            style={[
+              styles.userCardList,
+              {backgroundColor: theme.cardBackground},
+            ]}>
             <View
               style={[
                 {
@@ -112,7 +128,11 @@ const CustomDrawerContent = props => {
                   </Text>
                 </View>
               </View>
-              <Ionicons name="apps-outline" size={20} color={'black'} />
+              <Ionicons
+                name="apps-outline"
+                size={20}
+                color={theme.buttonColor}
+              />
               <View style={styles.listInfoItem}></View>
             </View>
           </View>
@@ -129,25 +149,46 @@ const CustomDrawerItem = ({
   mySwitch,
   isEnabled,
   toggleSwitch,
-}) => (
-  <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-    <TouchableOpacity onPress={onPress} style={styles.itemContainer}>
-      <View style={styles.drawerIcon}>
-        <Ionicons name="home" size={13} color={'black'} />
-      </View>
-      <Text style={styles.itemLabel}>{label}</Text>
-    </TouchableOpacity>
-    {mySwitch && (
-      <Switch
-        trackColor={{false: '#767577', true: '#81b0ff'}}
-        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
-    )}
-  </View>
-);
+}) => {
+  const {theme} = useContext(ThemeContext);
+  return (
+    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <TouchableOpacity
+        onPress={() => {
+          try {
+            onPress();
+            toggleSwitch();
+          } catch {
+            console.log('Catch');
+          }
+        }}
+        style={styles.itemContainer}>
+        <View style={styles.drawerIcon}>
+          <Ionicons name="home" size={13} color={'black'} />
+        </View>
+        <Text style={[styles.itemLabel, {color: theme.secondaryText}]}>
+          {label}
+        </Text>
+      </TouchableOpacity>
+      {mySwitch && (
+        <Switch
+          trackColor={{false: '#767577', true: '#81b0ff'}}
+          thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={() => {
+            try {
+              onPress();
+              toggleSwitch();
+            } catch {
+              console.log('Console.log');
+            }
+          }}
+          value={isEnabled}
+        />
+      )}
+    </View>
+  );
+};
 
 const DrawerNavigator = props => {
   const {theme} = useContext(ThemeContext);

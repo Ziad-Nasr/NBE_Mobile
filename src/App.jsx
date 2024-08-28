@@ -31,20 +31,17 @@ export const App = () => {
   }
 
   return (
-    <ThemeProvider>
-      <GestureHandlerRootView style={{flex: 1}}>
-        <NavigationContainer>
-          <ThemeContextConsumer />
-        </NavigationContainer>
-      </GestureHandlerRootView>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <ThemeContextConsumer />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 };
 
 // Separate component to handle the useContext and the rest of your app
 const ThemeContextConsumer = () => {
-  const {theme} = useContext(ThemeContext);
-
+  const {theme, toggleDarkMode} = useContext(ThemeContext);
   return (
     <View style={[styles.app, {backgroundColor: theme.background}]}>
       <StatusBar
