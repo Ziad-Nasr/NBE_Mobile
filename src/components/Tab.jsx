@@ -37,12 +37,13 @@ export const Tab = ({navigation}) => {
             padding: 5,
             borderTopStartRadius: 15,
             borderTopEndRadius: 15,
-            // width: ,
-            flexDirection: 'row',
             backgroundColor: theme.background,
-            justifyContent: 'space-between', // Distribute space between items
+            justifyContent: 'center', // Centers the content vertically
           },
-          tabBarItemStyle: {},
+          tabBarItemStyle: {
+            flex: 1, // Ensures the items are evenly distributed
+            alignItems: 'center', // Centers items horizontally
+          },
           tabBarLabelStyle: {
             fontSize: 10,
             color: route.focused

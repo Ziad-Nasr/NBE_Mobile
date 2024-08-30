@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, ImageBackground, Image, ScrollView} from 'react-native';
 import styles from './../styles/components/Card.style';
+import {ThemeContext} from '../ThemeContext';
 const Card = () => {
+  const {theme} = useContext(ThemeContext);
   return (
-    <View>
+    <View style={[{backgroundColor: theme.background}]}>
       <ScrollView horizontal={true}>
-        <View style={styles.card}>
+        <View style={[styles.card]}>
           <ImageBackground
             source={require('../../assets/CardImage.png')}
             resizeMode="contain"

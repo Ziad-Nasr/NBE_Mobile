@@ -7,9 +7,9 @@ export default styles = StyleSheet.create({
   },
   navigator: {
     backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
     // padding: 10,
     height: '100%',
   },
@@ -22,7 +22,7 @@ export default styles = StyleSheet.create({
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    marginEnd: 5,
+    marginHorizontal: 10,
   },
 
   activeNavIcon: {
@@ -40,7 +40,7 @@ export default styles = StyleSheet.create({
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    marginEnd: 5,
+    marginHorizontal: 10,
   },
 
   navIcon: {
