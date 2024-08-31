@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 
 import styles from './../styles/screens/HistoryScreen.style';
 import {TopBar} from '../components';
+import {ThemeContext} from '../ThemeContext';
 
 // function wait(ms) {
 //   const start = new Date().getTime();
@@ -50,18 +51,26 @@ export const HistoryScreen = () => {
     {name: 'Mohamed', image: require('./../../assets/media/avatars/29.jpg')},
     {name: 'Mohamed', image: require('./../../assets/media/avatars/30.jpg')},
   ]);
+  const {theme} = useContext(ThemeContext);
 
   return (
-    <View style={styles.accounts}>
+    <View style={[styles.accounts, {backgroundColor: theme.background}]}>
       <TopBar />
-      <Text style={styles.title}>History</Text>
+      <Text style={[styles.title, {color: theme.primaryText}]}>History</Text>
 
       <ScrollView contentContainerStyle={styles.scrollArea}>
         {users.map((user, i) => {
           return (
-            <View key={i} style={styles.userCard}>
+            <View
+              key={i}
+              style={[
+                styles.userCard,
+                {backgroundColor: theme.cardBackground},
+              ]}>
               <Image style={styles.image} source={user.image} />
-              <Text style={styles.name}>{user.name}</Text>
+              <Text style={[styles.name, {color: theme.primaryText}]}>
+                {user.name}
+              </Text>
             </View>
           );
         })}

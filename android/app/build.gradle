@@ -128,7 +128,7 @@ android {
           // Caution! In production, you need to generate your own keystore file.
           // see https://reactnative.dev/docs/signed-apk-android.
           // For the PNG extension errors
-          //   crunchPngs false
+            crunchPngs false
           signingConfig signingConfigs.debug
           minifyEnabled enableProguardInReleaseBuilds
           proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"

@@ -32,7 +32,11 @@ const TextField = () => {
     <View
       style={[
         styles.textFieldContainer,
-        {backgroundColor: theme.cardBackground},
+        {
+          backgroundColor: isDarkMode
+            ? theme.cardBackground
+            : styles.textFieldContainer.backgroundColor,
+        },
       ]}>
       <Text style={[styles.textFieldLabel, {color: theme.secondaryText}]}>
         Amount to transfer
@@ -44,7 +48,12 @@ const TextField = () => {
         onChangeText={handleAmountChange}
         style={[
           styles.defaultStyle,
-          {color: theme.primaryText, backgroundColor: theme.background},
+          {
+            color: theme.primaryText,
+            backgroundColor: isDarkMode
+              ? theme.background
+              : styles.defaultStyle.backgroundColor,
+          },
         ]}
         placeholderTextColor={theme.primaryText}
       />

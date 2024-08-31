@@ -1,10 +1,12 @@
-import React, {useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {Text, View, TextInput} from 'react-native';
 import TopSignup from '../../components/TopSignup';
 import {Button} from '../../Reusable components/Button';
 import styles from '../../styles/screens/Signup/Verification.style';
+import {ThemeContext} from '../../ThemeContext';
 
 export default function Verification({increment, decrement}) {
+  const {theme} = useContext(ThemeContext);
   const [values, setValues] = useState(Array(5).fill(''));
   const inputRefs = useRef([]);
   const handleChangeText = (text, index) => {
@@ -20,7 +22,7 @@ export default function Verification({increment, decrement}) {
   };
 
   return (
-    <View style={styles.Verification}>
+    <View style={[styles.Verification, {backgroundColor: theme.background}]}>
       <TopSignup
         decrement={decrement}
         title="Verification"
@@ -32,7 +34,13 @@ export default function Verification({increment, decrement}) {
             {values.map((value, index) => (
               <TextInput
                 key={index}
-                style={styles.input}
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: theme.cardBackground,
+                    color: theme.secondaryText,
+                  },
+                ]}
                 value={value}
                 onChangeText={text => handleChangeText(text, index)}
                 keyboardType="numeric"
@@ -42,8 +50,15 @@ export default function Verification({increment, decrement}) {
               />
             ))}
           </View>
-          <Text>Didn't receive the code?</Text>
-          <Text style={[styles.blackText, styles.bold]}>
+          <Text style={{color: theme.secondaryText}}>
+            Didn't receive the code?
+          </Text>
+          <Text
+            style={[
+              styles.blackText,
+              styles.bold,
+              {color: theme.secondaryText},
+            ]}>
             Request a new one in (Timer)
           </Text>
         </View>

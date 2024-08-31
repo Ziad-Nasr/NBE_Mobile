@@ -1,11 +1,6 @@
-import {
-  StyleSheet
-} from 'react-native';
-
+import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
-
-
   accounts: {
     padding: 10,
   },
@@ -18,14 +13,15 @@ export default styles = StyleSheet.create({
   },
 
   scrollArea: {
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginHorizontal: 10
   },
 
   userCard: {
-    width: 79,
+    width: 85,
     heigh: 80,
     padding: 5,
     backgroundColor: '#fff',
@@ -40,13 +36,9 @@ export default styles = StyleSheet.create({
     marginBottom: 5,
   },
 
-
-
   name: {
     color: '#222222',
     textAlign: 'center',
     fontWeight: '500',
   },
-
-
 });

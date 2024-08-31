@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import TopSignup from '../../components/TopSignup';
 import {Button} from '../../Reusable components/Button';
@@ -11,26 +11,38 @@ import {
   hasSpecial,
   hasUpper,
 } from '../../components/Validations';
+import {ThemeContext} from '../../ThemeContext';
 
 export default function SetupPassword({increment, decrement}) {
+  const {theme} = useContext(ThemeContext);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
-    <View style={styles.Verification}>
+    <View style={[styles.Verification, {backgroundColor: theme.background}]}>
       <TopSignup
         decrement={decrement}
         title="Set your password"
         subtitle="Enter a strong password for your online banking account"
       />
       <View style={[styles.mh15]}>
-        <View style={[styles.formFieldPassword]}>
+        <View
+          style={[
+            styles.formFieldPassword,
+            {backgroundColor: theme.background},
+          ]}>
           <Image
             source={require('../../../assets/media/padlock.png')}
             style={styles.arroba}
           />
           <View>
-            <Text style={styles.labelLoginInputPassword}>Password</Text>
+            <Text
+              style={[
+                styles.labelLoginInputPassword,
+                {color: theme.primaryText},
+              ]}>
+              Password
+            </Text>
             <TextInput
               secureTextEntry={true}
               placeholder="********"
@@ -43,13 +55,23 @@ export default function SetupPassword({increment, decrement}) {
             />
           </View>
         </View>
-        <View style={styles.formFieldPassword}>
+        <View
+          style={[
+            styles.formFieldPassword,
+            {backgroundColor: theme.background},
+          ]}>
           <Image
             source={require('../../../assets/media/padlock.png')}
             style={styles.arroba}
           />
           <View>
-            <Text style={styles.labelLoginInputPassword}>Confirm Password</Text>
+            <Text
+              style={[
+                styles.labelLoginInputPassword,
+                {color: theme.primaryText},
+              ]}>
+              Confirm Password
+            </Text>
             <TextInput
               secureTextEntry={true}
               placeholder="Re-write your password"
@@ -64,35 +86,82 @@ export default function SetupPassword({increment, decrement}) {
         </View>
         <View style={styles.dualItems}>
           <View style={styles.passwordItem}>
-            <View style={styles[hasLower(password) ? 'On' : 'Off']}></View>
-            <Text>Lower Case Letter</Text>
-          </View>
-          <View style={styles.passwordItem}>
-            <View style={styles[hasUpper(password) ? 'On' : 'Off']}></View>
-            <Text>Upper Case Letter</Text>
-          </View>
-        </View>
-        <View style={styles.dualItems}>
-          <View style={styles.passwordItem}>
-            <View style={styles[has8Char(password) ? 'On' : 'Off']}></View>
-            <Text>Minimum 8 Character</Text>
-          </View>
-          <View style={styles.passwordItem}>
-            <View style={styles[hasNumber(password) ? 'On' : 'Off']}></View>
-            <Text>Number</Text>
-          </View>
-        </View>
-        <View style={styles.dualItems}>
-          <View style={styles.passwordItem}>
-            <View style={styles[hasSpecial(password) ? 'On' : 'Off']}></View>
-            <Text>Special Character</Text>
+            <View
+              style={[
+                styles.circle,
+                {
+                  backgroundColor: hasLower(password)
+                    ? 'green'
+                    : theme.cardBackground,
+                },
+              ]}></View>
+            <Text style={{color: theme.secondaryText}}>Lower Case Letter</Text>
           </View>
           <View style={styles.passwordItem}>
             <View
-              style={
-                styles[Equal(password, confirmPassword) ? 'On' : 'Off']
-              }></View>
-            <Text>Matching Passwords</Text>
+              style={[
+                styles.circle,
+                {
+                  backgroundColor: hasUpper(password)
+                    ? 'green'
+                    : theme.cardBackground,
+                },
+              ]}></View>
+            <Text style={{color: theme.secondaryText}}>Upper Case Letter</Text>
+          </View>
+        </View>
+        <View style={styles.dualItems}>
+          <View style={styles.passwordItem}>
+            <View
+              style={[
+                styles.circle,
+                {
+                  backgroundColor: has8Char(password)
+                    ? 'green'
+                    : theme.cardBackground,
+                },
+              ]}></View>
+            <Text style={{color: theme.secondaryText}}>
+              Minimum 8 Character
+            </Text>
+          </View>
+          <View style={styles.passwordItem}>
+            <View
+              style={[
+                styles.circle,
+                {
+                  backgroundColor: hasNumber(password)
+                    ? 'green'
+                    : theme.cardBackground,
+                },
+              ]}></View>
+            <Text style={[{color: theme.secondaryText}]}>Number</Text>
+          </View>
+        </View>
+        <View style={styles.dualItems}>
+          <View style={styles.passwordItem}>
+            <View
+              style={[
+                styles.circle,
+                {
+                  backgroundColor: hasSpecial(password)
+                    ? 'green'
+                    : theme.cardBackground,
+                },
+              ]}></View>
+            <Text style={{color: theme.secondaryText}}>Special Character</Text>
+          </View>
+          <View style={styles.passwordItem}>
+            <View
+              style={[
+                styles.circle,
+                {
+                  backgroundColor: Equal(password, confirmPassword)
+                    ? 'green'
+                    : theme.cardBackground,
+                },
+              ]}></View>
+            <Text style={{color: theme.secondaryText}}>Matching Passwords</Text>
           </View>
         </View>
         <View style={styles.loginButton}>

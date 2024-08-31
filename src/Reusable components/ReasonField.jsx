@@ -3,12 +3,16 @@ import {Text, TextInput, View} from 'react-native';
 import {ThemeContext} from '../ThemeContext';
 
 const ReasonField = ({navigation, title, placeholder}) => {
-  const {theme} = useContext(ThemeContext);
+  const {theme, isDarkMode} = useContext(ThemeContext);
   return (
     <View
       style={[
         styles.textFieldContainer,
-        {backgroundColor: theme.cardBackground},
+        {
+          backgroundColor: isDarkMode
+            ? theme.cardBackground
+            : styles.textFieldContainer.backgroundColor,
+        },
       ]}>
       <Text style={[styles.textFieldLabel, {color: theme.secondaryText}]}>
         {title}
@@ -16,7 +20,7 @@ const ReasonField = ({navigation, title, placeholder}) => {
       <TextInput
         placeholder={placeholder}
         style={{
-          backgroundColor: theme.background,
+          backgroundColor: isDarkMode ? theme.background : '#FFF',
           borderColor: theme.borderColor,
           color: theme.primaryText,
           marginBottom: 10,

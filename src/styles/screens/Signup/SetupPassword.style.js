@@ -45,11 +45,10 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     width: '45%',
   },
-  Off: {
+  circle: {
     width: 10,
     height: 10,
     borderRadius: 50,
-    backgroundColor: 'gray',
     marginRight: 5,
   },
   On: {

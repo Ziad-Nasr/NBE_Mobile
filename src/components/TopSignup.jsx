@@ -7,7 +7,7 @@ export default function TopSignup(props) {
   const navigation = useNavigation();
   const {theme} = useContext(ThemeContext);
   return (
-    <View>
+    <View style={{backgroundColor: theme.background}}>
       <View style={[styles.upperLogin, {backgroundColor: theme.background}]}>
         <TouchableOpacity
           style={styles.backButton}
@@ -21,7 +21,7 @@ export default function TopSignup(props) {
           style={styles.upperLogo}
         />
       </View>
-      <View>
+      <View style={{}}>
         {props.title && (
           <Text style={[styles.title, {color: theme.primaryText}]}>
             {props.title}

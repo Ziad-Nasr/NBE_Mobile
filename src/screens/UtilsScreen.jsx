@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, Image, ScrollView} from 'react-native';
 
 import styles from './../styles/screens/UtilsScreen.style';
 import {TopBar} from '../components';
+import {ThemeContext} from '../ThemeContext';
 
 // function wait(ms) {
 //   const start = new Date().getTime();
@@ -16,6 +17,7 @@ import {TopBar} from '../components';
 // wait(1000);
 
 export const UtilsScreen = () => {
+  const {theme} = useContext(ThemeContext);
   const [users, setUsers] = useState([
     {name: 'Alexandar', image: require('./../../assets/media/picture.jpg')},
     {name: 'Elsa', image: require('./../../assets/media/avatars/1.png')},
@@ -52,17 +54,24 @@ export const UtilsScreen = () => {
   ]);
 
   return (
-    <View style={styles.accounts}>
+    <View style={[styles.accounts, {backgroundColor: theme.background}]}>
       <TopBar />
 
-      <Text style={styles.title}>Utilities</Text>
+      <Text style={[styles.title, {color: theme.primaryText}]}>Utilities</Text>
 
       <ScrollView contentContainerStyle={styles.scrollArea}>
         {users.map((user, i) => {
           return (
-            <View key={i} style={styles.userCard}>
+            <View
+              key={i}
+              style={[
+                styles.userCard,
+                {backgroundColor: theme.cardBackground},
+              ]}>
               <Image style={styles.image} source={user.image} />
-              <Text style={styles.name}>{user.name}</Text>
+              <Text style={[styles.name, {color: theme.primaryText}]}>
+                {user.name}
+              </Text>
             </View>
           );
         })}
