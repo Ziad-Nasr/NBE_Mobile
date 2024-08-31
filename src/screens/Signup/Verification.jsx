@@ -9,6 +9,7 @@ export default function Verification({increment, decrement}) {
   const {theme} = useContext(ThemeContext);
   const [values, setValues] = useState(Array(5).fill(''));
   const inputRefs = useRef([]);
+
   const handleChangeText = (text, index) => {
     if (text.length <= 1 && /^[0-9]*$/.test(text)) {
       const newValues = [...values];
@@ -20,6 +21,9 @@ export default function Verification({increment, decrement}) {
       }
     }
   };
+
+  // Check if all input fields have values
+  const isDisabled = values.some(value => value === '');
 
   return (
     <View style={[styles.Verification, {backgroundColor: theme.background}]}>
@@ -63,7 +67,11 @@ export default function Verification({increment, decrement}) {
           </Text>
         </View>
         <View style={styles.loginButton}>
-          <Button title="Submit" myOnClick={increment} />
+          <Button
+            title="Submit"
+            myOnClick={increment}
+            disabled={isDisabled} // Disable the button if any input field is empty
+          />
         </View>
       </View>
     </View>

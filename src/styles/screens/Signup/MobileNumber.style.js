@@ -4,7 +4,7 @@ export default styles = StyleSheet.create({
   MobileNumber: {
     alignItems: 'center',
     width: '100%',
-    height: '78%',
+    height: '76%',
     justifyContent: 'space-between',
   },
   formField: {

@@ -18,6 +18,18 @@ export default function SetupPassword({increment, decrement}) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  // Function to check if all conditions are met
+  const allConditionsMet = () => {
+    return (
+      hasLower(password) &&
+      hasUpper(password) &&
+      has8Char(password) &&
+      hasNumber(password) &&
+      hasSpecial(password) &&
+      Equal(password, confirmPassword)
+    );
+  };
+
   return (
     <View style={[styles.Verification, {backgroundColor: theme.background}]}>
       <TopSignup
@@ -165,7 +177,11 @@ export default function SetupPassword({increment, decrement}) {
           </View>
         </View>
         <View style={styles.loginButton}>
-          <Button title="Submit" myOnClick={increment} />
+          <Button
+            title="Submit"
+            myOnClick={increment}
+            disabled={!allConditionsMet()} // Disable button if any condition is false
+          />
         </View>
       </View>
     </View>
