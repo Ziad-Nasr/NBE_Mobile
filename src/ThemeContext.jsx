@@ -5,7 +5,7 @@ import dark from './themes/dark';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({children}) => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const theme = isDarkMode ? dark : light;
   function toggleDarkMode() {
     setIsDarkMode(prev => !prev);
@@ -17,3 +17,8 @@ export const ThemeProvider = ({children}) => {
     </ThemeContext.Provider>
   );
 };
+
+// TODO: Save the Dark mode, Async Storage save
+// TODO: isLoggedIn save context
+
+// TODO: Focuse the Input bar

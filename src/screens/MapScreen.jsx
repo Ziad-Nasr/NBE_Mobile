@@ -2,6 +2,8 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 
+// TODO: NavBar fe el Map
+
 const MapScreen = () => {
   const markers = [
     {
