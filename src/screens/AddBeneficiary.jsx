@@ -54,10 +54,10 @@ const AddBeneficiary = () => {
         </View>
         <View style={styles.firstLastName}>
           <View style={styles.beneficiaryTextField}>
-            <ReasonField title={'First name'} placeholder={'Ziad'} />
+            <ReasonField title={'First name'} placeholder={'First Name'} />
           </View>
           <View style={styles.beneficiaryTextField}>
-            <ReasonField title={'Last Name'} placeholder={'Nasr'} />
+            <ReasonField title={'Last Name'} placeholder={'Last Name'} />
           </View>
         </View>
         <Dropdown

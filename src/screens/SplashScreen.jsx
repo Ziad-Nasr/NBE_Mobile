@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {View, Image} from 'react-native';
 import Animated, {
   useSharedValue,
@@ -6,6 +6,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import styles from '../styles/screens/SplashScreen.style';
+import {ThemeContext} from '../ThemeContext';
 
 export function SplashScreen() {
   const scale = useSharedValue(0);
@@ -31,7 +32,7 @@ export function SplashScreen() {
   }, []);
 
   return (
-    <View style={styles.splash}>
+    <View style={[styles.splash]}>
       <Animated.Image
         source={require('../../assets/media/NBE_Middle_Logo.png')}
         style={[styles.middlelogo, animatedScaleStyle]}

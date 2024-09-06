@@ -55,7 +55,7 @@ const TextField = () => {
               : styles.defaultStyle.backgroundColor,
           },
         ]}
-        placeholderTextColor={theme.primaryText}
+        placeholderTextColor={theme.secondaryText}
       />
     </View>
   );

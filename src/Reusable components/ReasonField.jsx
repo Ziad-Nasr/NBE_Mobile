@@ -26,7 +26,7 @@ const ReasonField = ({navigation, title, placeholder}) => {
           marginBottom: 10,
           borderRadius: 5,
         }}
-        placeholderTextColor={theme.primaryText}
+        placeholderTextColor={theme.secondaryText}
       />
     </View>
   );
