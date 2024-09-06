@@ -5,6 +5,8 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
+  KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import {LoginForm} from '../components/LoginForm';
 import styles from '../styles/screens/LoginScreen.style';
@@ -28,31 +30,39 @@ export function LoginScreen({navigation}) {
       ) : isLoggedIn ? (
         navigation.navigate('drawer')
       ) : (
-        <View style={styles.login}>
-          <ImageBackground
-            source={require('../../assets/media/loginPageBackground.jpeg')}
-            resizeMode="cover"
-            style={styles.backgroundImage}>
-            <View style={styles.AboveBackgroundImage}>
-              <View style={styles.upperLogin}>
-                <TouchableOpacity
-                  style={styles.translateButton}
-                  onPress={() => {
-                    alert('Arabic Translation Soon');
-                  }}>
-                  <Text style={styles.translateButtonText}>AR</Text>
-                </TouchableOpacity>
-                <Image
-                  source={require('../../assets/media/NBE_Bottom_Logo.png')}
-                  style={styles.upperLogo}
-                />
-              </View>
-              <View style={styles.lowerLogin}>
-                <LoginForm navigation={navigation} />
-              </View>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={{flex: 1}}>
+          <ScrollView
+            contentContainerStyle={{flexGrow: 1}}
+            keyboardShouldPersistTaps="handled">
+            <View style={styles.login}>
+              <ImageBackground
+                source={require('../../assets/media/loginPageBackground.jpeg')}
+                resizeMode="cover"
+                style={styles.backgroundImage}>
+                <View style={styles.AboveBackgroundImage}>
+                  <View style={styles.upperLogin}>
+                    <TouchableOpacity
+                      style={styles.translateButton}
+                      onPress={() => {
+                        alert('Arabic Translation Soon');
+                      }}>
+                      <Text style={styles.translateButtonText}>AR</Text>
+                    </TouchableOpacity>
+                    <Image
+                      source={require('../../assets/media/NBE_Bottom_Logo.png')}
+                      style={styles.upperLogo}
+                    />
+                  </View>
+                  <View style={styles.lowerLogin}>
+                    <LoginForm navigation={navigation} />
+                  </View>
+                </View>
+              </ImageBackground>
             </View>
-          </ImageBackground>
-        </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
       )}
     </>
   );

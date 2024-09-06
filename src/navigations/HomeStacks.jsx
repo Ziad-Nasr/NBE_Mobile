@@ -9,6 +9,7 @@ import {
 } from '../screens';
 import {View} from 'react-native';
 import {TopBar} from '../components';
+import BeneficiaryStacks from './BeneficiaryStacks';
 
 const routes = [
   {
@@ -16,8 +17,8 @@ const routes = [
     component: HomeScreen,
   },
   {
-    name: 'accounts',
-    component: AccountsScreen,
+    name: 'Beneficiary',
+    component: BeneficiaryStacks,
   },
   {
     name: 'cards',

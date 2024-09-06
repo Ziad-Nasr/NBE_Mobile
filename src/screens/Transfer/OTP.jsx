@@ -1,17 +1,12 @@
-import React, {useState, useRef} from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  Modal,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import React, {useState, useRef, useContext} from 'react';
+import {View, Text, TextInput, Modal, Image} from 'react-native';
 import TopSignup from '../../components/TopSignup';
 import styles from '../../styles/screens/Signup/Verification.style';
 import {Button} from '../../Reusable components/Button';
+import {ThemeContext} from '../../ThemeContext';
 
 const OTP = ({navigation}) => {
+  const {theme} = useContext(ThemeContext);
   const [values, setValues] = useState(Array(5).fill(''));
   const [modalVisible, setModalVisible] = useState(false);
   const inputRefs = useRef([]);
@@ -46,7 +41,12 @@ const OTP = ({navigation}) => {
           navigation.navigate('transfer');
         }}
       />
-      <View style={{flex: 1, justifyContent: 'space-between'}}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'space-between',
+          backgroundColor: theme.background,
+        }}>
         <View>
           <View style={styles.container}>
             {values.map((value, index) => (

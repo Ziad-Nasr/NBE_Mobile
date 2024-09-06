@@ -8,7 +8,7 @@ import styles from './../styles/components/More.style';
 export const More = ({navigation}) => {
   const openAccountsScreen = () => {
     console.log('Test');
-    navigation.navigate('accounts');
+    navigation.navigate('Beneficiary');
     console.log('Test2');
   };
 
