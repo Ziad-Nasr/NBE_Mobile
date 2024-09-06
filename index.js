@@ -8,10 +8,13 @@ import {AppRegistry} from 'react-native';
 import {App} from './src/App';
 import {name as appName} from './app.json';
 import {ThemeProvider} from './src/ThemeContext';
+import {UserProvider} from './src/UserContext';
 
 const Root = () => (
   <ThemeProvider>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </ThemeProvider>
 );
 

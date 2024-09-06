@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,9 @@ import {
 } from 'react-native';
 import styles from '../styles/components/LoginForm.style';
 import {Button} from '../Reusable components/Button';
+import {UserContext} from '../UserContext';
 export function LoginForm({navigation}) {
+  const {login} = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   return (
@@ -29,6 +31,7 @@ export function LoginForm({navigation}) {
             placeholderTextColor={'#FFFFFF'}
             value={username}
             style={styles.loginInput}
+            onChange={e => setUsername(e.target.value)}
           />
         </View>
       </View>
@@ -45,6 +48,7 @@ export function LoginForm({navigation}) {
             placeholderTextColor={'#007236'}
             value={password}
             style={styles.loginInputPassword}
+            onChange={e => setPassword(e.target.value)}
           />
         </View>
       </View>
@@ -53,6 +57,7 @@ export function LoginForm({navigation}) {
           <Button
             title="Login"
             myOnClick={() => {
+              login(username);
               navigation.navigate('drawer');
             }}
           />

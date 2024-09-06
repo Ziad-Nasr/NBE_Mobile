@@ -10,10 +10,12 @@ import {Tab} from './Tab';
 import {View} from 'react-native';
 import {ThemeContext} from '../ThemeContext';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {UserContext} from '../UserContext';
 
 const Drawer = createDrawerNavigator();
 
 const CustomDrawerContent = props => {
+  const {logout} = useContext(UserContext);
   const {theme, toggleDarkMode} = useContext(ThemeContext);
   try {
     console.log('Toggle');
@@ -88,7 +90,10 @@ const CustomDrawerContent = props => {
         <View style={{marginBottom: 40}}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('login')}
+              onPress={() => {
+                logout();
+                props.navigation.navigate('login');
+              }}
               style={styles.itemContainer}>
               <View style={styles.redDrawerIcon}>
                 <Ionicons name="power" size={13} color={'red'} />

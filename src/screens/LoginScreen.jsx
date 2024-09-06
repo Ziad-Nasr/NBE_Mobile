@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   Text,
@@ -9,8 +9,12 @@ import {
 import {LoginForm} from '../components/LoginForm';
 import styles from '../styles/screens/LoginScreen.style';
 import {SplashScreen} from './SplashScreen';
+import {UserContext} from '../UserContext';
+import {ThemeContext} from '../ThemeContext';
 
 export function LoginScreen({navigation}) {
+  const {isLoggedIn} = useContext(UserContext);
+  console.log(isLoggedIn);
   const [loadingCounter, setLoadingCounter] = useState(0);
   if (loadingCounter < 3) {
     setTimeout(() => {
@@ -21,6 +25,8 @@ export function LoginScreen({navigation}) {
     <>
       {loadingCounter < 3 ? (
         <SplashScreen />
+      ) : isLoggedIn ? (
+        navigation.navigate('drawer')
       ) : (
         <View style={styles.login}>
           <ImageBackground
