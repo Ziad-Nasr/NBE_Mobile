@@ -57,8 +57,9 @@ export const History = () => {
       </View>
       <ScrollView>
         {historyData.map((item, index) => (
-          <View>
-            <View style={styles.historyBody} key={index}>
+          <View key={index}>
+            {/* Move the key here */}
+            <View style={styles.historyBody}>
               <View>
                 <Text
                   style={[
