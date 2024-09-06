@@ -72,4 +72,15 @@ export default styles = StyleSheet.create({
     borderColor: '#000', // Adjust to your theme color
     borderRadius: 5,
   },
+  VerificationInput: {
+    height: 60,
+    width: 40,
+    borderColor: '#000',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginHorizontal: 10,
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 17,
+  },
 });

@@ -18,11 +18,18 @@ export default function Verification({increment, decrement}) {
 
       if (text && index < inputRefs.current.length - 1) {
         inputRefs.current[index + 1].focus();
+      } else if (!text && index > 0) {
+        inputRefs.current[index - 1].focus();
       }
     }
   };
 
-  // Check if all input fields have values
+  const handleKeyPress = ({nativeEvent}, index) => {
+    if (nativeEvent.key === 'Backspace' && !values[index] && index > 0) {
+      inputRefs.current[index - 1].focus();
+    }
+  };
+
   const isDisabled = values.some(value => value === '');
 
   return (
@@ -39,17 +46,19 @@ export default function Verification({increment, decrement}) {
               <TextInput
                 key={index}
                 style={[
-                  styles.input,
+                  styles.VerificationInput,
                   {
                     backgroundColor: theme.cardBackground,
-                    color: theme.secondaryText,
+                    color: theme.primaryText,
                   },
                 ]}
                 value={value}
                 onChangeText={text => handleChangeText(text, index)}
+                onKeyPress={e => handleKeyPress(e, index)}
                 keyboardType="numeric"
                 maxLength={1}
                 placeholder="_"
+                placeholderTextColor={theme.secondaryText}
                 ref={el => (inputRefs.current[index] = el)}
               />
             ))}
@@ -63,7 +72,7 @@ export default function Verification({increment, decrement}) {
               styles.bold,
               {color: theme.secondaryText},
             ]}>
-            Request a new one in (Timer)
+            Request a new one
           </Text>
         </View>
         <View style={styles.loginButton}>

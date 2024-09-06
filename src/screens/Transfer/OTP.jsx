@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useRef} from 'react';
 import {View, Text, Modal, Image} from 'react-native';
 import OTPTextInput from 'react-native-otp-textinput';
 import TopSignup from '../../components/TopSignup';
@@ -10,8 +10,9 @@ const OTP = ({navigation}) => {
   const {theme} = useContext(ThemeContext);
   const [otp, setOtp] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const otpInputRef = React.createRef();
+  const otpInputRef = useRef();
 
+  // Function to handle OTP change
   const handleOtpChange = otpValue => {
     setOtp(otpValue);
   };
@@ -25,11 +26,14 @@ const OTP = ({navigation}) => {
     navigation.navigate('transfer');
   };
 
+  // Check if OTP input length is 6
+  const isSubmitDisabled = otp.length !== 6;
+
   return (
     <View style={styles.Verification}>
       <TopSignup
         title="OTP"
-        subtitle="Enter 5 digit code we sent to +20 101 131 5412"
+        subtitle="Enter 6 digit code we sent to +20 101 131 5412"
         decrement={() => {
           navigation.navigate('transfer');
         }}
@@ -44,7 +48,7 @@ const OTP = ({navigation}) => {
           <View style={styles.container}>
             <OTPTextInput
               ref={otpInputRef}
-              inputCount={5}
+              inputCount={6} // Update to 6
               handleTextChange={handleOtpChange}
               containerStyle={[styles.otpContainer]}
               textInputStyle={[
@@ -65,7 +69,12 @@ const OTP = ({navigation}) => {
           </View>
         </View>
         <View style={styles.loginButton}>
-          <Button title="Submit" myOnClick={openModal} />
+          {/* Disable the button if OTP is not 6 digits long */}
+          <Button
+            title="Submit"
+            myOnClick={openModal}
+            disabled={isSubmitDisabled}
+          />
         </View>
       </View>
 
@@ -85,7 +94,7 @@ const OTP = ({navigation}) => {
               Mission Complete
             </Text>
             <Text style={styles.modalSubtitle}>
-              Transfer to Jsmine Robert was successful
+              Transfer to Jasmine Robert was successful
             </Text>
             <Button
               title={'Finish'}
