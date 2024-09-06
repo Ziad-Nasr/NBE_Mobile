@@ -1,5 +1,6 @@
-import React, {useState, useRef, useContext} from 'react';
-import {View, Text, TextInput, Modal, Image} from 'react-native';
+import React, {useState, useContext} from 'react';
+import {View, Text, Modal, Image} from 'react-native';
+import OTPTextInput from 'react-native-otp-textinput';
 import TopSignup from '../../components/TopSignup';
 import styles from '../../styles/screens/Signup/Verification.style';
 import {Button} from '../../Reusable components/Button';
@@ -7,20 +8,12 @@ import {ThemeContext} from '../../ThemeContext';
 
 const OTP = ({navigation}) => {
   const {theme} = useContext(ThemeContext);
-  const [values, setValues] = useState(Array(5).fill(''));
+  const [otp, setOtp] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const inputRefs = useRef([]);
+  const otpInputRef = React.createRef();
 
-  const handleChangeText = (text, index) => {
-    if (text.length <= 1 && /^[0-9]*$/.test(text)) {
-      const newValues = [...values];
-      newValues[index] = text;
-      setValues(newValues);
-
-      if (text && index < inputRefs.current.length - 1) {
-        inputRefs.current[index + 1].focus();
-      }
-    }
+  const handleOtpChange = otpValue => {
+    setOtp(otpValue);
   };
 
   const openModal = () => {
@@ -49,23 +42,25 @@ const OTP = ({navigation}) => {
         }}>
         <View>
           <View style={styles.container}>
-            {values.map((value, index) => (
-              <TextInput
-                key={index}
-                style={styles.input}
-                value={value}
-                onChangeText={text => handleChangeText(text, index)}
-                keyboardType="numeric"
-                maxLength={1}
-                placeholder="_"
-                ref={el => (inputRefs.current[index] = el)}
-              />
-            ))}
+            <OTPTextInput
+              ref={otpInputRef}
+              inputCount={5}
+              handleTextChange={handleOtpChange}
+              containerStyle={[styles.otpContainer]}
+              textInputStyle={[
+                styles.input,
+                {backgroundColor: theme.cardBackground},
+                {color: theme.primaryText},
+              ]}
+              keyboardType="numeric"
+            />
           </View>
           <View style={{margin: 15}}>
-            <Text>Didn't receive the code?</Text>
-            <Text style={[styles.blackText, styles.bold]}>
-              Request a new one in (Timer)
+            <Text style={{color: theme.primaryText}}>
+              Didn't receive the code?
+            </Text>
+            <Text style={[{color: theme.secondaryText}, styles.bold]}>
+              Request a new one
             </Text>
           </View>
         </View>
@@ -80,12 +75,15 @@ const OTP = ({navigation}) => {
         visible={modalVisible}
         onRequestClose={closeModal}>
         <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
+          <View
+            style={[styles.modalContent, {backgroundColor: theme.background}]}>
             <Image
               source={require('../../../assets/checked.png')}
               style={styles.modalImage}
             />
-            <Text style={styles.modalTitle}>Mission Complete</Text>
+            <Text style={[styles.modalTitle, {color: theme.primaryText}]}>
+              Mission Complete
+            </Text>
             <Text style={styles.modalSubtitle}>
               Transfer to Jsmine Robert was successful
             </Text>

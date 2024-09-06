@@ -158,7 +158,9 @@ export const AccountsScreen = ({navigation}) => {
                           style={styles.microImage}
                         />
                       </View>
-                      <Text>$802,828,61</Text>
+                      <Text style={{color: theme.secondaryText}}>
+                        $802,828,61
+                      </Text>
                     </View>
                   </View>
                 )}

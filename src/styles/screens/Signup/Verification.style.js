@@ -61,4 +61,15 @@ export default styles = StyleSheet.create({
   modalCloseButton: {
     fontSize: 16,
   },
+  otpContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 20,
+  },
+  input: {
+    height: 60,
+    // borderWidth: 1,
+    borderColor: '#000', // Adjust to your theme color
+    borderRadius: 5,
+  },
 });
